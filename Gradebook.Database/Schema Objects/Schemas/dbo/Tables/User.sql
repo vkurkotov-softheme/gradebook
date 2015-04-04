@@ -12,10 +12,11 @@
     [RegisteredAdress] NVARCHAR(150) NOT NULL, 
     [Phone] NVARCHAR(35) NULL, 
     [HomePhone] NVARCHAR(35) NULL, 
-    [Grade] NVARCHAR(4) NULL, 
+    [GradeId] INT NULL, 
     [JobTitle] NVARCHAR(50) NULL, 
     [WorkTitle] NVARCHAR(100) NULL, 
     [Relationship] NVARCHAR(50) NULL, 
     [Deleted] BIT NOT NULL DEFAULT 0, 
-    CONSTRAINT [CK_Email_PasswordHash] CHECK ([Email] IS NULL AND [PasswordHash] IS NULL OR [Email] IS NOT NULL AND [PasswordHash] IS NOT NULL)
+    CONSTRAINT [CK_Email_PasswordHash] CHECK ([Email] IS NULL AND [PasswordHash] IS NULL OR [Email] IS NOT NULL AND [PasswordHash] IS NOT NULL), 
+    CONSTRAINT [FK_Grade_To_Grade] FOREIGN KEY ([GradeId]) REFERENCES [Grade]([Id])
 )

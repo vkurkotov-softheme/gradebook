@@ -35,4 +35,81 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RegisteredAdress" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9f57bdbe-a0a8-4c9e-9453-fbe7d0db2de9" ChangeDateTime="04/04/2015 21:57:16">
+    <Property Name="ElementName" Value="[dbo].[ParentPupil].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParentPupil]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParentId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="01723182-02ca-4ed0-8e8b-f25ebfac7106" ChangeDateTime="04/04/2015 22:16:53">
+    <Property Name="ElementName" Value="[dbo].[TeacherSubject].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TeacherSubject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TeacherId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bc868790-9900-4774-9c44-a813c4875b9d" ChangeDateTime="04/04/2015 22:18:28">
+    <Property Name="ElementName" Value="[dbo].[FK_TeacherSubject_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[TeacherSubject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Teacher_To_User]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="70c86f1f-60ee-4f5f-9a6b-5bfedff8bdac" ChangeDateTime="04/04/2015 22:26:52">
+    <Property Name="ElementName" Value="[dbo].[User].[Grade]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GradeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1189bb0f-87ac-4542-9f39-5e63f2ad9f1b" ChangeDateTime="04/04/2015 22:43:44">
+    <Property Name="ElementName" Value="[dbo].[CallShedule].[Start]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CallShedule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StartTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1970743c-b8eb-48da-877f-70b1c447cc83" ChangeDateTime="04/04/2015 22:48:11">
+    <Property Name="ElementName" Value="[dbo].[PK_Table1]" />
+    <Property Name="ElementType" Value="SqlPrimaryKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Table1]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[PK_Holday]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4c919042-a938-4a6c-8dc2-76bc1a5662e1" ChangeDateTime="04/04/2015 22:48:42">
+    <Property Name="ElementName" Value="[dbo].[PK_Holday]" />
+    <Property Name="ElementType" Value="SqlPrimaryKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Holiday]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[PK_Holiday]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="07240eea-6dc6-4aaa-9173-564830f8be76" ChangeDateTime="04/04/2015 22:51:24">
+    <Property Name="ElementName" Value="[dbo].[Mark].[Teacher]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Mark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TeacherId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="89ad1122-7844-4acb-a319-b77c2e791295" ChangeDateTime="04/04/2015 22:54:41">
+    <Property Name="ElementName" Value="[dbo].[FK_Teacher_To_User_Mark]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Mark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Mark_Teacher_To_User]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="991b72fe-c692-4139-aaa2-f2654bd8662f" ChangeDateTime="04/04/2015 22:54:49">
+    <Property Name="ElementName" Value="[dbo].[FK_Pupil_To_User_Mark]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Mark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Mark_Pupil_To_User]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5ce68139-2816-45ea-9981-34d9fc5e2f22" ChangeDateTime="04/04/2015 22:58:46">
+    <Property Name="ElementName" Value="[dbo].[FK_Mark_LessonNumber]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Mark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Mark_LessonNumber_Number]" />
+  </Operation>
 </Operations>
