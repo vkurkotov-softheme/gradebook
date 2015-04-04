@@ -42,4 +42,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ParentId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="01723182-02ca-4ed0-8e8b-f25ebfac7106" ChangeDateTime="04/04/2015 22:16:53">
+    <Property Name="ElementName" Value="[dbo].[TeacherSubject].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TeacherSubject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TeacherId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bc868790-9900-4774-9c44-a813c4875b9d" ChangeDateTime="04/04/2015 22:18:28">
+    <Property Name="ElementName" Value="[dbo].[FK_TeacherSubject_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[TeacherSubject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Teacher_To_User]" />
+  </Operation>
 </Operations>
