@@ -4,28 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7f074810018645988003be1792330255" Name="Diagram1">
-        <EntityTypeShape EntityType="GradebookModel.CallShedule" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.Grade" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.Holiday" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.LessonShedule" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.Mark" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.ParentPupil" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.Subject" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GradebookModel.User" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="a0d471496cec4dceb28fcc88dbe23e24" Name="Diagram1">
+        <EntityTypeShape EntityType="GradebookModel.CallShedule" Width="1.5" PointX="12.875" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradebookModel.Grade" Width="1.5" PointX="9.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradebookModel.Holiday" Width="1.5" PointX="12.375" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradebookModel.LessonShedule" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradebookModel.Mark" Width="1.5" PointX="12" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradebookModel.Subject" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GradebookModel.User" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="GradebookModel.FK_LessonShedule_LessonNumber_Number" ManuallyRouted="false" />
         <AssociationConnector Association="GradebookModel.FK_Mark_LessonNumber_Number" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_FormMaster_To_User" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_Grade_To_Grade" ManuallyRouted="false" />
         <AssociationConnector Association="GradebookModel.FK_LessonShedule_Grade_To_Grade" ManuallyRouted="false" />
         <AssociationConnector Association="GradebookModel.FK_LessonShedule_Subject_To_Subject" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_LessonShedule_Teacher_To_User" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_Mark_Pupil_To_User" ManuallyRouted="false" />
         <AssociationConnector Association="GradebookModel.FK_Mark_Subject_To_Subject" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_Mark_Teacher_To_User" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_Parent_To_User" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_Pupil_To_User" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.TeacherSubject" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GradebookModel.Pupil" Width="1.5" PointX="3.625" PointY="0.625" />
+        <InheritanceConnector EntityType="GradebookModel.Pupil" />
+        <EntityTypeShape EntityType="GradebookModel.Parent" Width="1.5" PointX="3.75" PointY="3.125" />
+        <InheritanceConnector EntityType="GradebookModel.Parent" />
+        <EntityTypeShape EntityType="GradebookModel.Teacher" Width="1.5" PointX="3.75" PointY="4.875" />
+        <InheritanceConnector EntityType="GradebookModel.Teacher" />
+        <AssociationConnector Association="GradebookModel.PupilGrade" />
+        <AssociationConnector Association="GradebookModel.PupilParent" />
+        <AssociationConnector Association="GradebookModel.TeacherSubject" />
+        <AssociationConnector Association="GradebookModel.TeacherGrade" />
+        <AssociationConnector Association="GradebookModel.MarkTeacher" />
+        <AssociationConnector Association="GradebookModel.MarkPupil" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

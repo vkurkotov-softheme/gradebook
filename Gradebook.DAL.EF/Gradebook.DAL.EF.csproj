@@ -48,12 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallShedule.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Grade.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="GradebookEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,25 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GradebookEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Holiday.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LessonShedule.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mark.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ParentPupil.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Subject.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>GradebookEntities.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">

@@ -98,13 +98,12 @@
           <Property Name="HomePhone" Type="nvarchar" MaxLength="35" />
           <Property Name="GradeId" Type="int" />
           <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
-          <Property Name="WorkTitle" Type="nvarchar" MaxLength="100" />
           <Property Name="Relationship" Type="nvarchar" MaxLength="50" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
           <Property Name="Role" Type="int" Nullable="false" />
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_FormMaster_To_User">
+        <Association Name="FK_Grade_FormMaster_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,18 +112,6 @@
             </Principal>
             <Dependent Role="Grade">
               <PropertyRef Name="FormMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Grade_To_Grade">
-          <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="GradeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -224,7 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Parent_To_User">
+        <Association Name="FK_ParentPupil_Parent_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="ParentPupil" Type="Self.ParentPupil" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,7 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pupil_To_User">
+        <Association Name="FK_ParentPupil_Pupil_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="ParentPupil" Type="Self.ParentPupil" Multiplicity="*" />
           <ReferentialConstraint>
@@ -248,7 +235,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Subject_To_Subject">
+        <Association Name="FK_TeacherSubject_Subject_To_Subject">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
           <ReferentialConstraint>
@@ -260,7 +247,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teacher_To_User">
+        <Association Name="FK_TeacherSubject_Teacher_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
           <ReferentialConstraint>
@@ -269,6 +256,18 @@
             </Principal>
             <Dependent Role="TeacherSubject">
               <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_PupilGrade_To_GradeTable">
+          <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="GradeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -282,13 +281,9 @@
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherSubject" EntityType="Self.TeacherSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_FormMaster_To_User" Association="Self.FK_FormMaster_To_User">
+          <AssociationSet Name="FK_Grade_FormMaster_To_User" Association="Self.FK_Grade_FormMaster_To_User">
             <End Role="User" EntitySet="User" />
             <End Role="Grade" EntitySet="Grade" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Grade_To_Grade" Association="Self.FK_Grade_To_Grade">
-            <End Role="Grade" EntitySet="Grade" />
-            <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_LessonShedule_Grade_To_Grade" Association="Self.FK_LessonShedule_Grade_To_Grade">
             <End Role="Grade" EntitySet="Grade" />
@@ -322,21 +317,25 @@
             <End Role="User" EntitySet="User" />
             <End Role="Mark" EntitySet="Mark" />
           </AssociationSet>
-          <AssociationSet Name="FK_Parent_To_User" Association="Self.FK_Parent_To_User">
+          <AssociationSet Name="FK_ParentPupil_Parent_To_User" Association="Self.FK_ParentPupil_Parent_To_User">
             <End Role="User" EntitySet="User" />
             <End Role="ParentPupil" EntitySet="ParentPupil" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pupil_To_User" Association="Self.FK_Pupil_To_User">
+          <AssociationSet Name="FK_ParentPupil_Pupil_To_User" Association="Self.FK_ParentPupil_Pupil_To_User">
             <End Role="User" EntitySet="User" />
             <End Role="ParentPupil" EntitySet="ParentPupil" />
           </AssociationSet>
-          <AssociationSet Name="FK_Subject_To_Subject" Association="Self.FK_Subject_To_Subject">
+          <AssociationSet Name="FK_TeacherSubject_Subject_To_Subject" Association="Self.FK_TeacherSubject_Subject_To_Subject">
             <End Role="User" EntitySet="User" />
             <End Role="TeacherSubject" EntitySet="TeacherSubject" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teacher_To_User" Association="Self.FK_Teacher_To_User">
+          <AssociationSet Name="FK_TeacherSubject_Teacher_To_User" Association="Self.FK_TeacherSubject_Teacher_To_User">
             <End Role="User" EntitySet="User" />
             <End Role="TeacherSubject" EntitySet="TeacherSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_PupilGrade_To_GradeTable" Association="Self.FK_User_PupilGrade_To_GradeTable">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -362,11 +361,10 @@
           <Property Name="GradeName" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BeginYear" Type="Int16" Nullable="false" />
           <Property Name="GraduateYear" Type="Int16" Nullable="false" />
-          <Property Name="FormMasterId" Type="Int32" Nullable="false" />
           <Property Name="Graduated" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_FormMaster_To_User" FromRole="Grade" ToRole="User" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Grade_To_Grade" FromRole="Grade" ToRole="User" />
           <NavigationProperty Name="LessonShedules" Relationship="Self.FK_LessonShedule_Grade_To_Grade" FromRole="Grade" ToRole="LessonShedule" />
+          <NavigationProperty Name="Pupils" Relationship="GradebookModel.PupilGrade" FromRole="Grade" ToRole="Pupil" />
+          <NavigationProperty Name="FormMaster" Relationship="GradebookModel.TeacherGrade" FromRole="Grade" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="Holiday">
           <Key>
@@ -390,7 +388,6 @@
           <NavigationProperty Name="CallShedule" Relationship="Self.FK_LessonShedule_LessonNumber_Number" FromRole="LessonShedule" ToRole="CallShedule" />
           <NavigationProperty Name="Grade" Relationship="Self.FK_LessonShedule_Grade_To_Grade" FromRole="LessonShedule" ToRole="Grade" />
           <NavigationProperty Name="Subject" Relationship="Self.FK_LessonShedule_Subject_To_Subject" FromRole="LessonShedule" ToRole="Subject" />
-          <NavigationProperty Name="User" Relationship="Self.FK_LessonShedule_Teacher_To_User" FromRole="LessonShedule" ToRole="User" />
         </EntityType>
         <EntityType Name="Mark">
           <Key>
@@ -405,19 +402,9 @@
           <Property Name="LessonNumber" Type="Int16" Nullable="false" />
           <Property Name="IsPresent" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="CallShedule" Relationship="Self.FK_Mark_LessonNumber_Number" FromRole="Mark" ToRole="CallShedule" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Mark_Pupil_To_User" FromRole="Mark" ToRole="User" />
           <NavigationProperty Name="Subject" Relationship="Self.FK_Mark_Subject_To_Subject" FromRole="Mark" ToRole="Subject" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_Mark_Teacher_To_User" FromRole="Mark" ToRole="User" />
-        </EntityType>
-        <EntityType Name="ParentPupil">
-          <Key>
-            <PropertyRef Name="ParentId" />
-            <PropertyRef Name="PupilId" />
-          </Key>
-          <Property Name="ParentId" Type="Int32" Nullable="false" />
-          <Property Name="PupilId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Parent_To_User" FromRole="ParentPupil" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_Pupil_To_User" FromRole="ParentPupil" ToRole="User" />
+          <NavigationProperty Name="Teacher" Relationship="GradebookModel.MarkTeacher" FromRole="Mark" ToRole="Teacher" />
+          <NavigationProperty Name="Pupil" Relationship="GradebookModel.MarkPupil" FromRole="Mark" ToRole="Pupil" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -427,6 +414,7 @@
           <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="LessonShedules" Relationship="Self.FK_LessonShedule_Subject_To_Subject" FromRole="Subject" ToRole="LessonShedule" />
           <NavigationProperty Name="Marks" Relationship="Self.FK_Mark_Subject_To_Subject" FromRole="Subject" ToRole="Mark" />
+          <NavigationProperty Name="Teachers" Relationship="GradebookModel.TeacherSubject" FromRole="Subject" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -444,22 +432,8 @@
           <Property Name="RegisteredAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="HomePhone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
-          <Property Name="GradeId" Type="Int32" />
-          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WorkTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
           <Property Name="Role" Type="Int32" Nullable="false" />
-          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Grades" Relationship="Self.FK_FormMaster_To_User" FromRole="User" ToRole="Grade" />
-          <NavigationProperty Name="Grade" Relationship="Self.FK_Grade_To_Grade" FromRole="User" ToRole="Grade" />
-          <NavigationProperty Name="LessonShedules" Relationship="Self.FK_LessonShedule_Teacher_To_User" FromRole="User" ToRole="LessonShedule" />
-          <NavigationProperty Name="Marks" Relationship="Self.FK_Mark_Pupil_To_User" FromRole="User" ToRole="Mark" />
-          <NavigationProperty Name="Marks1" Relationship="Self.FK_Mark_Teacher_To_User" FromRole="User" ToRole="Mark" />
-          <NavigationProperty Name="ParentPupils" Relationship="Self.FK_Parent_To_User" FromRole="User" ToRole="ParentPupil" />
-          <NavigationProperty Name="ParentPupils1" Relationship="Self.FK_Pupil_To_User" FromRole="User" ToRole="ParentPupil" />
-          <NavigationProperty Name="User1" Relationship="Self.TeacherSubject" FromRole="User" ToRole="User1" />
-          <NavigationProperty Name="Users" Relationship="Self.TeacherSubject" FromRole="User1" ToRole="User" />
         </EntityType>
         <Association Name="FK_LessonShedule_LessonNumber_Number">
           <End Role="CallShedule" Type="Self.CallShedule" Multiplicity="1" />
@@ -482,30 +456,6 @@
             </Principal>
             <Dependent Role="Mark">
               <PropertyRef Name="LessonNumber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FormMaster_To_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Grade">
-              <PropertyRef Name="FormMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Grade_To_Grade">
-          <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="GradeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -533,30 +483,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LessonShedule_Teacher_To_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="LessonShedule" Type="Self.LessonShedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LessonShedule">
-              <PropertyRef Name="TeacherId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Mark_Pupil_To_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Mark">
-              <PropertyRef Name="PupilId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Mark_Subject_To_Subject">
           <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
           <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
@@ -569,53 +495,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mark_Teacher_To_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Mark">
-              <PropertyRef Name="TeacherId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Parent_To_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="ParentPupil" Type="Self.ParentPupil" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParentPupil">
-              <PropertyRef Name="ParentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pupil_To_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="ParentPupil" Type="Self.ParentPupil" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ParentPupil">
-              <PropertyRef Name="ParentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TeacherSubject">
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <End Role="User1" Type="Self.User" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CallShedules" EntityType="Self.CallShedule" />
           <EntitySet Name="Grades" EntityType="Self.Grade" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />
           <EntitySet Name="LessonShedules" EntityType="Self.LessonShedule" />
           <EntitySet Name="Marks" EntityType="Self.Mark" />
-          <EntitySet Name="ParentPupils" EntityType="Self.ParentPupil" />
           <EntitySet Name="Subjects" EntityType="Self.Subject" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_LessonShedule_LessonNumber_Number" Association="Self.FK_LessonShedule_LessonNumber_Number">
@@ -626,14 +511,6 @@
             <End Role="CallShedule" EntitySet="CallShedules" />
             <End Role="Mark" EntitySet="Marks" />
           </AssociationSet>
-          <AssociationSet Name="FK_FormMaster_To_User" Association="Self.FK_FormMaster_To_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Grade" EntitySet="Grades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Grade_To_Grade" Association="Self.FK_Grade_To_Grade">
-            <End Role="Grade" EntitySet="Grades" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_LessonShedule_Grade_To_Grade" Association="Self.FK_LessonShedule_Grade_To_Grade">
             <End Role="Grade" EntitySet="Grades" />
             <End Role="LessonShedule" EntitySet="LessonShedules" />
@@ -642,35 +519,96 @@
             <End Role="Subject" EntitySet="Subjects" />
             <End Role="LessonShedule" EntitySet="LessonShedules" />
           </AssociationSet>
-          <AssociationSet Name="FK_LessonShedule_Teacher_To_User" Association="Self.FK_LessonShedule_Teacher_To_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="LessonShedule" EntitySet="LessonShedules" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Mark_Pupil_To_User" Association="Self.FK_Mark_Pupil_To_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Mark" EntitySet="Marks" />
-          </AssociationSet>
           <AssociationSet Name="FK_Mark_Subject_To_Subject" Association="Self.FK_Mark_Subject_To_Subject">
             <End Role="Subject" EntitySet="Subjects" />
             <End Role="Mark" EntitySet="Marks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mark_Teacher_To_User" Association="Self.FK_Mark_Teacher_To_User">
-            <End Role="User" EntitySet="Users" />
+          <AssociationSet Name="PupilGrade" Association="GradebookModel.PupilGrade">
+            <End Role="Pupil" EntitySet="Users" />
+            <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="PupilParent" Association="GradebookModel.PupilParent">
+            <End Role="Pupil" EntitySet="Users" />
+            <End Role="Parent" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="TeacherSubject" Association="GradebookModel.TeacherSubject">
+            <End Role="Teacher" EntitySet="Users" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="TeacherGrade" Association="GradebookModel.TeacherGrade">
+            <End Role="Teacher" EntitySet="Users" />
+            <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="MarkTeacher" Association="GradebookModel.MarkTeacher">
             <End Role="Mark" EntitySet="Marks" />
+            <End Role="Teacher" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_Parent_To_User" Association="Self.FK_Parent_To_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="ParentPupil" EntitySet="ParentPupils" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pupil_To_User" Association="Self.FK_Pupil_To_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="ParentPupil" EntitySet="ParentPupils" />
-          </AssociationSet>
-          <AssociationSet Name="TeacherSubject" Association="Self.TeacherSubject">
-            <End Role="User" EntitySet="Users" />
-            <End Role="User1" EntitySet="Users" />
+          <AssociationSet Name="MarkPupil" Association="GradebookModel.MarkPupil">
+            <End Role="Mark" EntitySet="Marks" />
+            <End Role="Pupil" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Pupil" BaseType="GradebookModel.User" >
+          <NavigationProperty Name="Grade" Relationship="GradebookModel.PupilGrade" FromRole="Pupil" ToRole="Grade" />
+          <NavigationProperty Name="Parents" Relationship="GradebookModel.PupilParent" FromRole="Pupil" ToRole="Parent" />
+          <NavigationProperty Name="Marks" Relationship="GradebookModel.MarkPupil" FromRole="Pupil" ToRole="Mark" />
+        </EntityType>
+        <EntityType Name="Parent" BaseType="GradebookModel.User" >
+          <NavigationProperty Name="Pupils" Relationship="GradebookModel.PupilParent" FromRole="Parent" ToRole="Pupil" />
+        </EntityType>
+        <EntityType Name="Teacher" BaseType="GradebookModel.User" >
+          <NavigationProperty Name="Subjects" Relationship="GradebookModel.TeacherSubject" FromRole="Teacher" ToRole="Subject" />
+          <NavigationProperty Name="Grade" Relationship="GradebookModel.TeacherGrade" FromRole="Teacher" ToRole="Grade" />
+          <NavigationProperty Name="Marks" Relationship="GradebookModel.MarkTeacher" FromRole="Teacher" ToRole="Mark" />
+        </EntityType>
+        <Association Name="PupilGrade">
+          <End Type="GradebookModel.Pupil" Role="Pupil" Multiplicity="*" />
+          <End Type="GradebookModel.Grade" Role="Grade" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupil">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PupilParent">
+          <End Type="GradebookModel.Pupil" Role="Pupil" Multiplicity="*" />
+          <End Type="GradebookModel.Parent" Role="Parent" Multiplicity="*" />
+        </Association>
+        <Association Name="TeacherSubject">
+          <End Type="GradebookModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <End Type="GradebookModel.Subject" Role="Subject" Multiplicity="*" />
+        </Association>
+        <Association Name="TeacherGrade">
+          <End Type="GradebookModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="GradebookModel.Grade" Role="Grade" Multiplicity="1" />
+        </Association>
+        <Association Name="MarkTeacher">
+          <End Type="GradebookModel.Mark" Role="Mark" Multiplicity="*" />
+          <End Type="GradebookModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mark">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MarkPupil">
+          <End Type="GradebookModel.Mark" Role="Mark" Multiplicity="*" />
+          <End Type="GradebookModel.Pupil" Role="Pupil" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Pupil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mark">
+              <PropertyRef Name="PupilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -693,7 +631,6 @@
                 <ScalarProperty Name="GradeName" ColumnName="GradeName" />
                 <ScalarProperty Name="BeginYear" ColumnName="BeginYear" />
                 <ScalarProperty Name="GraduateYear" ColumnName="GraduateYear" />
-                <ScalarProperty Name="FormMasterId" ColumnName="FormMasterId" />
                 <ScalarProperty Name="Graduated" ColumnName="Graduated" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -734,14 +671,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ParentPupils">
-            <EntityTypeMapping TypeName="GradebookModel.ParentPupil">
-              <MappingFragment StoreEntitySet="ParentPupil">
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="PupilId" ColumnName="PupilId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Subjects">
             <EntityTypeMapping TypeName="GradebookModel.Subject">
               <MappingFragment StoreEntitySet="Subject">
@@ -751,37 +680,91 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="GradebookModel.User">
+            <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.User)">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="ResidentalAdress" ColumnName="ResidentalAdress" />
-                <ScalarProperty Name="RegisteredAdress" ColumnName="RegisteredAdress" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="WorkTitle" ColumnName="WorkTitle" />
-                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RegisteredAdress" ColumnName="RegisteredAdress" />
+                <ScalarProperty Name="ResidentalAdress" ColumnName="ResidentalAdress" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.Pupil)">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="UserType" Value="PUPIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.Parent)">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="UserType" Value="PARENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.Teacher)">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <Condition ColumnName="UserType" Value="TEACHER" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="TeacherSubject" TypeName="GradebookModel.TeacherSubject" StoreEntitySet="TeacherSubject">
-            <EndProperty Name="User">
+          <AssociationSetMapping Name="PupilParent" TypeName="GradebookModel.PupilParent" StoreEntitySet="ParentPupil" >
+            <EndProperty Name="Parent">
+              <ScalarProperty Name="Id" ColumnName="ParentId" />
+            </EndProperty>
+            <EndProperty Name="Pupil">
+              <ScalarProperty Name="Id" ColumnName="PupilId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TeacherSubject" TypeName="GradebookModel.TeacherSubject" StoreEntitySet="TeacherSubject" >
+            <EndProperty Name="Subject">
               <ScalarProperty Name="Id" ColumnName="SubjecctId" />
             </EndProperty>
-            <EndProperty Name="User1">
+            <EndProperty Name="Teacher">
               <ScalarProperty Name="Id" ColumnName="TeacherId" />
             </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TeacherGrade" TypeName="GradebookModel.TeacherGrade" StoreEntitySet="Grade">
+            <EndProperty Name="Grade">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Teacher">
+              <ScalarProperty Name="Id" ColumnName="FormMasterId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MarkTeacher" TypeName="GradebookModel.MarkTeacher" StoreEntitySet="Mark">
+            <EndProperty Name="Teacher">
+              <ScalarProperty Name="Id" ColumnName="TeacherId" />
+            </EndProperty>
+            <EndProperty Name="Mark">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MarkPupil" TypeName="GradebookModel.MarkPupil" StoreEntitySet="Mark">
+            <EndProperty Name="Pupil">
+              <ScalarProperty Name="Id" ColumnName="PupilId" />
+            </EndProperty>
+            <EndProperty Name="Mark">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PupilGrade" TypeName="GradebookModel.PupilGrade" StoreEntitySet="User">
+            <EndProperty Name="Grade">
+              <ScalarProperty Name="Id" ColumnName="GradeId" />
+            </EndProperty>
+            <EndProperty Name="Pupil">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="GradeId" IsNull="false" />
           </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
