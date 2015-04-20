@@ -69,6 +69,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GradebookModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GradebookModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GradebookModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GradebookModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GradebookModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Holiday.cs">
       <DependentUpon>GradebookModel.tt</DependentUpon>
     </Compile>
@@ -78,11 +88,17 @@
     <Compile Include="Mark.cs">
       <DependentUpon>GradebookModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ParentPupil.cs">
+    <Compile Include="Parent.cs">
       <DependentUpon>GradebookModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pupil.cs">
+      <DependentUpon>GradebookModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Subject.cs">
+      <DependentUpon>GradebookModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.cs">
       <DependentUpon>GradebookModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -95,7 +111,7 @@
     </None>
     <EntityDeploy Include="GradebookModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GradebookModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>GradebookModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="GradebookModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -108,7 +124,7 @@
     <None Include="GradebookModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GradebookModel.edmx</DependentUpon>
-      <LastGenOutput>GradebookModel.cs</LastGenOutput>
+      <LastGenOutput>GradebookModel1.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

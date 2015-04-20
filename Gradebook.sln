@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Web", "Gradebook.Web\Gradebook.Web.csproj", "{6A3B0E8F-AE34-4C20-8479-F68819204FCC}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Gradebook.Database", "Gradebook.Database\Gradebook.Database.sqlproj", "{D349BF93-7342-4B7B-B464-F4335E861330}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.DAL.EF", "Gradebook.DAL.EF\Gradebook.DAL.EF.csproj", "{07024387-302B-4BB4-AB39-00D469DA0824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Business", "Gradebook.Business\Gradebook.Business.csproj", "{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{07024387-302B-4BB4-AB39-00D469DA0824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07024387-302B-4BB4-AB39-00D469DA0824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07024387-302B-4BB4-AB39-00D469DA0824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
