@@ -28,8 +28,8 @@ namespace Gradebook.Business.Implemintation
                 Grade = pupil.Grade
             };
 
-            _entities.Users.Add(newUser);
-            _entities.SaveChanges();
+            //_entities.Users.Add(newUser);
+            //_entities.SaveChanges();
             return newUser;
         }
     }

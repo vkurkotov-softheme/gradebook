@@ -1,9 +1,11 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System.Web.Mvc;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Gradebook.Business.Implemintation;
 using Gradebook.Business.Interfaces;
+using Gradebook.DAL.EF;
 
 namespace Gradebook.Web.Infrastructure
 {
@@ -16,9 +18,14 @@ namespace Gradebook.Web.Infrastructure
 
         private void RegisterComponents(IWindsorContainer container)
         {
-            //container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
+            container.Register(Classes.FromThisAssembly()
+                            .BasedOn<IController>()
+                            .LifestyleTransient());
 
-            container.Register(Component.For<IUserService>().ImplementedBy<UserService>().LifestylePerWebRequest());
+            container.Register(
+                Component.For<IUserService>().ImplementedBy<UserService>().LifestylePerWebRequest(),
+                Component.For<Entities>().LifestylePerWebRequest()
+                );
         }
     }
 }
