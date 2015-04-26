@@ -19,10 +19,6 @@ namespace Gradebook.Web.Controllers
 
         public ActionResult Index()
         {
-            _userService.CreatePupil(new PupilDto()
-            {
-                FirstName = "asdasdasd"
-            });
             return View();
         }
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gradebook.Web.Resources {
+namespace Gradebook.Translations {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Gradebook.Web.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Gradebook.Web.Resources.i18n", typeof(i18n).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Gradebook.Translations.i18n", typeof(i18n).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace Gradebook.Web.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birth Date.
+        /// </summary>
+        public static string BirthDate {
+            get {
+                return ResourceManager.GetString("BirthDate", resourceCulture);
             }
         }
         
@@ -88,6 +97,33 @@ namespace Gradebook.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle Name.
+        /// </summary>
+        public static string MiddleName {
+            get {
+                return ResourceManager.GetString("MiddleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent.
+        /// </summary>
+        public static string Parent {
+            get {
+                return ResourceManager.GetString("Parent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -106,6 +142,24 @@ namespace Gradebook.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pupil.
+        /// </summary>
+        public static string Pupil {
+            get {
+                return ResourceManager.GetString("Pupil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} must be at least {2} characters long..
         /// </summary>
         public static string StringLengthError {
@@ -120,6 +174,24 @@ namespace Gradebook.Web.Resources {
         public static string StringMaxLengthError {
             get {
                 return ResourceManager.GetString("StringMaxLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teacher.
+        /// </summary>
+        public static string Teacher {
+            get {
+                return ResourceManager.GetString("Teacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Type.
+        /// </summary>
+        public static string UserType {
+            get {
+                return ResourceManager.GetString("UserType", resourceCulture);
             }
         }
     }

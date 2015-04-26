@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GradebookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GradebookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CallShedule">
           <Key>
             <PropertyRef Name="Number" />
@@ -84,8 +84,8 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="35" Nullable="false" />
-          <Property Name="ResidentalAdress" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="RegisteredAdress" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ResidentalAdress" Type="nvarchar" MaxLength="150" />
+          <Property Name="RegisteredAdress" Type="nvarchar" MaxLength="150" />
           <Property Name="Phone" Type="nvarchar" MaxLength="35" />
           <Property Name="HomePhone" Type="nvarchar" MaxLength="35" />
           <Property Name="GradeId" Type="int" />
@@ -377,8 +377,8 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ResidentalAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RegisteredAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResidentalAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteredAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="HomePhone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
