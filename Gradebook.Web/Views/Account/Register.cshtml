@@ -54,9 +54,15 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BirthDate, new {@class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.DatePickerFor("BirthDate", m => m.BirthDate, new { @class = "form-control date-picker", @readonly = "true" })
+            @Html.DatePickerFor("BirthDate", m => m.BirthDate, new {@class = "form-control date-picker", @readonly = "true"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsAdministrator, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.IsAdministrator, new { @class = "form-control date-picker", @readonly = "true" })
         </div>
     </div>
     <div class="form-group">

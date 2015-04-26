@@ -72,6 +72,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="TeacherSubject">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+            <PropertyRef Name="SubjecctId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="SubjecctId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -95,6 +103,7 @@
           <Property Name="Role" Type="int" Nullable="false" />
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsParent" Type="bit" />
+          <Property Name="IsAdministrator" Type="bit" />
         </EntityType>
         <Association Name="FK_Grade_FormMaster_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -230,6 +239,30 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             </Dependent>
           </ReferentialConstraint>
         </Association>-->
+        <Association Name="FK_TeacherSubject_Subject_To_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherSubject">
+              <PropertyRef Name="SubjecctId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeacherSubject_Teacher_To_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="TeacherSubject" Type="Self.TeacherSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TeacherSubject">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_PupilGrade_To_GradeTable">
           <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -250,6 +283,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <EntitySet Name="Mark" EntityType="Self.Mark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ParentPupil" EntityType="Self.ParentPupil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherSubject" EntityType="Self.TeacherSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Grade_FormMaster_To_User" Association="Self.FK_Grade_FormMaster_To_User">
             <End Role="User" EntitySet="User" />
@@ -290,6 +324,14 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <AssociationSet Name="FK_ParentPupil_Parent_To_User" Association="Self.FK_ParentPupil_Parent_To_User">
             <End Role="User" EntitySet="User" />
             <End Role="ParentPupil" EntitySet="ParentPupil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherSubject_Subject_To_Subject" Association="Self.FK_TeacherSubject_Subject_To_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="TeacherSubject" EntitySet="TeacherSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeacherSubject_Teacher_To_User" Association="Self.FK_TeacherSubject_Teacher_To_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="TeacherSubject" EntitySet="TeacherSubject" />
           </AssociationSet>
           <AssociationSet Name="FK_User_PupilGrade_To_GradeTable" Association="Self.FK_User_PupilGrade_To_GradeTable">
             <End Role="Grade" EntitySet="Grade" />
@@ -364,6 +406,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="LessonShedules" Relationship="Self.FK_LessonShedule_Subject_To_Subject" FromRole="Subject" ToRole="LessonShedule" />
           <NavigationProperty Name="Marks" Relationship="Self.FK_Mark_Subject_To_Subject" FromRole="Subject" ToRole="Mark" />
+          <NavigationProperty Name="Teachers" Relationship="GradebookModel.TeacherSubject" FromRole="Subject" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="User" Abstract="true">
           <Key>
@@ -456,6 +499,10 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             <End Role="Pupil" EntitySet="Users" />
             <End Role="Parent" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="TeacherSubject" Association="GradebookModel.TeacherSubject">
+            <End Role="Teacher" EntitySet="Users" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Pupil" BaseType="GradebookModel.User" >
           <NavigationProperty Name="Marks" Relationship="GradebookModel.MarkPupil" FromRole="Pupil" ToRole="Mark" />
@@ -472,6 +519,8 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <NavigationProperty Name="Lessons" Relationship="GradebookModel.LessonSheduleTeacher" FromRole="Teacher" ToRole="LessonShedule" />
           <NavigationProperty Name="Grade" Relationship="GradebookModel.TeacherGrade" FromRole="Teacher" ToRole="Grade" />
           <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subjects" Relationship="GradebookModel.TeacherSubject" FromRole="Teacher" ToRole="Subject" />
+          <Property Name="IsAdministrator" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="MarkPupil">
           <End Type="GradebookModel.Mark" Role="Mark" Multiplicity="*" />
@@ -496,6 +545,10 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
         <Association Name="PupilParent">
           <End Type="GradebookModel.Pupil" Role="Pupil" Multiplicity="*" />
           <End Type="GradebookModel.Parent" Role="Parent" Multiplicity="*" />
+        </Association>
+        <Association Name="TeacherSubject">
+          <End Type="GradebookModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <End Type="GradebookModel.Subject" Role="Subject" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -594,6 +647,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.Teacher)">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsAdministrator" ColumnName="IsAdministrator" />
                 <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="UserType" Value="Teacher" />
@@ -688,6 +742,14 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             </EndProperty>
             <EndProperty Name="Pupil">
               <ScalarProperty Name="Id" ColumnName="PupilId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TeacherSubject" TypeName="GradebookModel.TeacherSubject" StoreEntitySet="TeacherSubject" >
+            <EndProperty Name="Subject">
+              <ScalarProperty Name="Id" ColumnName="SubjecctId" />
+            </EndProperty>
+            <EndProperty Name="Teacher">
+              <ScalarProperty Name="Id" ColumnName="TeacherId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

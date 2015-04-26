@@ -16,7 +16,11 @@
         <AssociationConnector Association="GradebookModel.FK_Mark_LessonNumber_Number" ManuallyRouted="false" />
         <AssociationConnector Association="GradebookModel.FK_LessonShedule_Grade_To_Grade" ManuallyRouted="false" />
         <AssociationConnector Association="GradebookModel.FK_LessonShedule_Subject_To_Subject" ManuallyRouted="false" />
-        <AssociationConnector Association="GradebookModel.FK_Mark_Subject_To_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="GradebookModel.FK_Mark_Subject_To_Subject" ManuallyRouted="true" >
+          <ConnectorPoint PointX="5.5" PointY="11.818927263997395" />
+          <ConnectorPoint PointX="11.655501177802462" PointY="11.818927263997395" />
+          <ConnectorPoint PointX="11.655501177802462" PointY="10.807190755208332" />
+        </AssociationConnector>
         <EntityTypeShape EntityType="GradebookModel.Pupil" Width="1.5" PointX="4" PointY="3.5" />
         <InheritanceConnector EntityType="GradebookModel.Pupil" />
         <EntityTypeShape EntityType="GradebookModel.Parent" Width="1.5" PointX="4" PointY="5.625" />
@@ -31,14 +35,14 @@
           <ConnectorPoint PointX="8.7083333333333339" PointY="5.3552864583333308" />
           <ConnectorPoint PointX="8.5416666666666661" PointY="5.3552864583333317" />
           <ConnectorPoint PointX="6.2087732953777666" PointY="5.3552864583333317" />
-          <ConnectorPoint PointX="6.2087732953777666" PointY="4.297841796875" />
-          <ConnectorPoint PointX="5.5" PointY="4.297841796875" />
+          <ConnectorPoint PointX="5.5" PointY="4.281887545886601" />
         </AssociationConnector>
         <AssociationConnector Association="GradebookModel.PupilGrade" />
         <AssociationConnector Association="GradebookModel.TeacherMark" />
         <AssociationConnector Association="GradebookModel.LessonSheduleTeacher" />
         <AssociationConnector Association="GradebookModel.TeacherGrade" />
         <AssociationConnector Association="GradebookModel.PupilParent" />
+        <AssociationConnector Association="GradebookModel.TeacherSubject" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

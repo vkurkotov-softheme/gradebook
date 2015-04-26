@@ -18,6 +18,7 @@ namespace Gradebook.DAL.EF
         {
             this.LessonShedules = new HashSet<LessonShedule>();
             this.Marks = new HashSet<Mark>();
+            this.Teachers = new HashSet<Teacher>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace Gradebook.DAL.EF
     
         public virtual ICollection<LessonShedule> LessonShedules { get; set; }
         public virtual ICollection<Mark> Marks { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; }
     }
 }

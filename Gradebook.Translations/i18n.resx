@@ -162,4 +162,7 @@
   <data name="UserType" xml:space="preserve">
     <value>User Type</value>
   </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
 </root>

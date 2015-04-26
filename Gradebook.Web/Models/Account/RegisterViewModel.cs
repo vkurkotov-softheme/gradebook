@@ -46,5 +46,8 @@ namespace Gradebook.Web.Models
         [DataType(DataType.Date)]
         [Display(Name = "BirthDate", ResourceType = typeof(i18n))]
         public DateTime BirthDate { get; set; }
+
+        [Display(Name = "Administrator", ResourceType = typeof(i18n))]
+        public bool IsAdministrator { get; set; }
     }
 }

@@ -18,12 +18,15 @@ namespace Gradebook.DAL.EF
         {
             this.Marks = new HashSet<Mark>();
             this.Lessons = new HashSet<LessonShedule>();
+            this.Subjects = new HashSet<Subject>();
         }
     
         public string JobTitle { get; set; }
+        public bool IsAdministrator { get; set; }
     
         public virtual ICollection<Mark> Marks { get; set; }
         public virtual ICollection<LessonShedule> Lessons { get; set; }
         public virtual Grade Grade { get; set; }
+        public virtual ICollection<Subject> Subjects { get; set; }
     }
 }
