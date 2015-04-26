@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public Data Contracts\PupilDto.cs" />
+    <Compile Include="Public Data Contracts\TeacherDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gradebook.DAL.EF\Gradebook.DAL.EF.csproj">

@@ -6,5 +6,7 @@ namespace Gradebook.Business.Interfaces
     public interface IUserService
     {
         Pupil CreatePupil(PupilDto pupil) ;
+
+        Teacher CreateTeacher(TeacherDto teacher);
     }
 }

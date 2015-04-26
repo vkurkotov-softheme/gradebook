@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Gradebook.Business.Interfaces;
+using Gradebook.Business.Public_Data_Contracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -63,6 +64,22 @@ namespace Gradebook.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var modelDto = new TeacherDto
+                {
+                    FirstName = model.FirstName,
+                    Email = model.Email,
+                    BirthDate = model.BirthDate,
+                    IsAdministrator = model.IsAdministrator,
+                    LastName = model.LastName,
+                    MiddleName = model.MiddleName,
+                    Password = model.Password,
+                    UserType = model.UserType
+                };
+
+                _userService.CreateTeacher(modelDto);
+            }
             
             return View(model);
         }

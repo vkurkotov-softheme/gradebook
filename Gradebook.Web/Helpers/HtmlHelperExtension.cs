@@ -52,7 +52,7 @@ namespace Gradebook.Web.Helpers
 
         private static MvcHtmlString AddDatePickerJavascriptCall(MvcHtmlString editorString, string id)
         {
-            var scriptPart = string.Format("<script>$(function() {{$(\"#{0}\").datepicker();}})</script>", id);
+            var scriptPart = string.Format("<script>$(function() {{$(\"#{0}\").datepicker({{changeMonth: true, changeYear: true, dateFormat: \"yy-mm-dd\"}});}})</script>", id);
             return MvcHtmlString.Create(editorString + scriptPart);
         }
 
