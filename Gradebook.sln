@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Web.Tests", "Grad
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Gradebook.Database", "Gradebook.Database\Gradebook.Database.sqlproj", "{D349BF93-7342-4B7B-B464-F4335E861330}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.DAL.EF", "Gradebook.DAL.EF\Gradebook.DAL.EF.csproj", "{07024387-302B-4BB4-AB39-00D469DA0824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Business", "Gradebook.Business\Gradebook.Business.csproj", "{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Translations", "Gradebook.Translations\Gradebook.Translations.csproj", "{199849A1-AAD4-4166-8500-960B77E920BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +35,18 @@ Global
 		{D349BF93-7342-4B7B-B464-F4335E861330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D349BF93-7342-4B7B-B464-F4335E861330}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D349BF93-7342-4B7B-B464-F4335E861330}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{07024387-302B-4BB4-AB39-00D469DA0824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07024387-302B-4BB4-AB39-00D469DA0824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07024387-302B-4BB4-AB39-00D469DA0824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07024387-302B-4BB4-AB39-00D469DA0824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A25EF2B-B6A6-4D0E-901F-81A92E33DD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{199849A1-AAD4-4166-8500-960B77E920BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199849A1-AAD4-4166-8500-960B77E920BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199849A1-AAD4-4166-8500-960B77E920BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199849A1-AAD4-4166-8500-960B77E920BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
