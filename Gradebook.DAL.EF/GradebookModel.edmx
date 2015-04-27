@@ -103,6 +103,7 @@
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsParent" Type="bit" />
           <Property Name="IsAdministrator" Type="bit" />
+          <Property Name="Language" Type="nvarchar" MaxLength="8" />
         </EntityType>
         <Association Name="FK_Grade_FormMaster_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -274,6 +275,16 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetUserType_Function" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="GradebookModelStoreContainer">
           <EntitySet Name="CallShedule" EntityType="Self.CallShedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
@@ -424,6 +435,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="Phone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="HomePhone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK_LessonShedule_LessonNumber_Number">
           <End Role="CallShedule" Type="Self.CallShedule" Multiplicity="1" />
@@ -501,6 +513,9 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             <End Role="Teacher" EntitySet="Users" />
             <End Role="Subject" EntitySet="Subjects" />
           </AssociationSet>
+          <FunctionImport Name="GetUserType_Function" IsComposable="true" ReturnType="Collection(String)">
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Pupil" BaseType="GradebookModel.User" >
           <NavigationProperty Name="Marks" Relationship="GradebookModel.MarkPupil" FromRole="Pupil" ToRole="Mark" />
@@ -518,7 +533,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <NavigationProperty Name="Grade" Relationship="GradebookModel.TeacherGrade" FromRole="Teacher" ToRole="Grade" />
           <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Subjects" Relationship="GradebookModel.TeacherSubject" FromRole="Teacher" ToRole="Subject" />
-          <Property Name="IsAdministrator" Type="Boolean" Nullable="false" />
+          <Property Name="IsAdministrator" Type="Boolean" />
         </EntityType>
         <Association Name="MarkPupil">
           <End Type="GradebookModel.Mark" Role="Mark" Multiplicity="*" />
@@ -613,6 +628,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.User)">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
@@ -749,6 +765,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
               <ScalarProperty Name="Id" ColumnName="TeacherId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserType_Function" FunctionName="GradebookModel.Store.GetUserType_Function" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

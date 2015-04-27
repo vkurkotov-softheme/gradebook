@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
+using Gradebook.DAL.EF;
+using Gradebook.Web.Common.FormsAuthentification;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -14,19 +16,20 @@ using Gradebook.Web.Models;
 
 namespace Gradebook.Web.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class AccountController : Controller
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
+        private readonly IFormsAuthenticationService _formsService;
         
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IFormsAuthenticationService formsService)
         {
             _userService = userService;
+            _formsService = formsService;
         }
 
         //
         // GET: /Account/Login
-        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -36,22 +39,25 @@ namespace Gradebook.Web.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
+                if (_userService.ValidateUser(model.Email, model.Password))
+                {
+                    var user = _userService.GetUser(model.Email);
+                    SignIn(user, model.RememberMe);
+                    _userService.UpdateLastLoginTime(user);
+                }
                 return View(model);
             }
 
             return null;
         }
 
-
         //
         // GET: /Account/Register
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -60,7 +66,6 @@ namespace Gradebook.Web.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
@@ -86,7 +91,6 @@ namespace Gradebook.Web.Controllers
 
         //
         // GET: /Account/ForgotPasswordConfirmation
-        [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
@@ -94,10 +98,14 @@ namespace Gradebook.Web.Controllers
 
         //
         // GET: /Account/ResetPassword
-        [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
+        }
+
+        private void SignIn(User user, bool rememberMe)
+        {
+            _formsService.SignIn(user, rememberMe);
         }
     }
 }

@@ -8,5 +8,11 @@ namespace Gradebook.Business.Interfaces
         Pupil CreatePupil(PupilDto pupil) ;
 
         Teacher CreateTeacher(TeacherDto teacher);
+
+        bool ValidateUser(string email, string password);
+
+        User GetUser(string email);
+
+        void UpdateLastLoginTime(User user);
     }
 }

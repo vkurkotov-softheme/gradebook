@@ -33,6 +33,7 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -44,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\UserType.cs" />
+    <Compile Include="Helpers\AssertHelper.cs" />
+    <Compile Include="Helpers\MD5Helper.cs" />
     <Compile Include="Implemintation\UserService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

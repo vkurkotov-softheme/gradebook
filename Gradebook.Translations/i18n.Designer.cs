@@ -196,11 +196,29 @@ namespace Gradebook.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User &quot;{0}&quot; has not been found.
+        /// </summary>
+        public static string UserNotFoundException {
+            get {
+                return ResourceManager.GetString("UserNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User Type.
         /// </summary>
         public static string UserType {
             get {
                 return ResourceManager.GetString("UserType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value cannot be null or empty..
+        /// </summary>
+        public static string ValueCannotBeNullOrEmpty {
+            get {
+                return ResourceManager.GetString("ValueCannotBeNullOrEmpty", resourceCulture);
             }
         }
     }

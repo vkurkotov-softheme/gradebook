@@ -19,6 +19,7 @@
     [UserType] NVARCHAR(50) NOT NULL DEFAULT 'BASEUSER', 
     [IsParent] BIT NULL, 
     [IsAdministrator] BIT NULL, 
+	[Language] nVarchar(8) NULL,
     CONSTRAINT [CK_Email_PasswordHash] CHECK ([Email] IS NULL AND [PasswordHash] IS NULL OR [Email] IS NOT NULL AND [PasswordHash] IS NOT NULL), 
     CONSTRAINT [FK_User_PupilGrade_To_GradeTable] FOREIGN KEY ([GradeId]) REFERENCES [Grade]([Id])
 )

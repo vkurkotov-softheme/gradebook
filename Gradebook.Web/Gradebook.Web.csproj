@@ -168,11 +168,18 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Common\FormsAuthentification\FormsAuthenticationService.cs" />
+    <Compile Include="Common\FormsAuthentification\IFormsAuthenticationService.cs" />
+    <Compile Include="Common\GradebookPrincipalService\GradebookPrincipal.cs" />
+    <Compile Include="Common\GradebookPrincipalService\GradebookPrincipalSerializeModel.cs" />
+    <Compile Include="Common\GradebookPrincipalService\IGradebookPrincipal.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtension.cs" />
     <Compile Include="Infrastructure\WindsorComponentRegistrar.cs" />
     <Compile Include="Infrastructure\WindsorControllerFactory.cs" />

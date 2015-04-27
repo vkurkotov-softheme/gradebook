@@ -165,4 +165,10 @@
   <data name="Administrator" xml:space="preserve">
     <value>Адміністратор</value>
   </data>
+  <data name="UserNotFoundException" xml:space="preserve">
+    <value>Користувача "{0}" не знайдено</value>
+  </data>
+  <data name="ValueCannotBeNullOrEmpty" xml:space="preserve">
+    <value>Значення не може бути пустим або відсутнім.</value>
+  </data>
 </root>

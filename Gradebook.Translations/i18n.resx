@@ -165,4 +165,10 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administrator</value>
   </data>
+  <data name="UserNotFoundException" xml:space="preserve">
+    <value>User "{0}" has not been found</value>
+  </data>
+  <data name="ValueCannotBeNullOrEmpty" xml:space="preserve">
+    <value>Value cannot be null or empty.</value>
+  </data>
 </root>

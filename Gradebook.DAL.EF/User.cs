@@ -27,5 +27,6 @@ namespace Gradebook.DAL.EF
         public string Phone { get; set; }
         public string HomePhone { get; set; }
         public bool Deleted { get; set; }
+        public string Language { get; set; }
     }
 }

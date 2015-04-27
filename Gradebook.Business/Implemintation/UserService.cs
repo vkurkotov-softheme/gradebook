@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Data.Entity.Core;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Gradebook.Business.Helpers;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
 using Gradebook.DAL.EF;
+using Gradebook.Translations;
 
 namespace Gradebook.Business.Implemintation
 {
@@ -47,7 +50,7 @@ namespace Gradebook.Business.Implemintation
                 IsAdministrator = teacher.IsAdministrator,
                 LastName = teacher.LastName,
                 MiddleName = teacher.MiddleName,
-                PasswordHash = GetPasswordHash(teacher.Password)
+                PasswordHash = MD5Helper.GetPasswordHash(teacher.Password)
             };
 
             _entities.Users.Add(newTeacher);
@@ -56,19 +59,34 @@ namespace Gradebook.Business.Implemintation
             return newTeacher;
         }
 
-        private string GetPasswordHash(string password)
+        public bool ValidateUser(string email, string password)
         {
-            using (var hasher = MD5.Create())
-            {
-                byte[] data = hasher.ComputeHash(Encoding.Default.GetBytes(password));
-                var hash = new StringBuilder();
-                for (int i = 0; i < data.Length; i++)
-                {
-                    hash.Append(data[i].ToString("x2", CultureInfo.InvariantCulture));
-                }
+            AssertHelper.AssertNotNull(email, "email", "email field is not passed");
+            AssertHelper.AssertNotNull(password, "password", "password field is not passed");
 
-                return hash.ToString();
+            var user = _entities.Users.FirstOrDefault(u => u.Email == email && u.PasswordHash == MD5Helper.GetPasswordHash(password));
+
+            return user != null;
+        }
+
+        public User GetUser(string email)
+        {
+            AssertHelper.AssertNotNull(email, "email", "email field is not passed");
+
+            var user = _entities.Users.FirstOrDefault(u => u.Email == email);
+
+            if (user == null)
+            {
+                throw new ObjectNotFoundException(string.Format(i18n.UserNotFoundException, email));
             }
+
+            return user;
+        }
+
+        public void UpdateLastLoginTime(User user)
+        {
+            user.LastLogin = DateTime.UtcNow;
+            _entities.SaveChanges();
         }
     }
 }
