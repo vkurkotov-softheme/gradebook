@@ -16,7 +16,6 @@
     [JobTitle] NVARCHAR(50) NULL, 
     [Relationship] NVARCHAR(50) NULL, 
     [Deleted] BIT NOT NULL DEFAULT 0, 
-    [Role] INT NOT NULL, 
     [UserType] NVARCHAR(50) NOT NULL DEFAULT 'BASEUSER', 
     [IsParent] BIT NULL, 
     [IsAdministrator] BIT NULL, 

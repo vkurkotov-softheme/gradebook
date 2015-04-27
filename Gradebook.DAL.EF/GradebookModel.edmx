@@ -100,7 +100,6 @@
           <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="Relationship" Type="nvarchar" MaxLength="50" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
-          <Property Name="Role" Type="int" Nullable="false" />
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsParent" Type="bit" />
           <Property Name="IsAdministrator" Type="bit" />
@@ -425,7 +424,6 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="Phone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="HomePhone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="Role" Type="Int32" Nullable="false" />
           </EntityType>
         <Association Name="FK_LessonShedule_LessonNumber_Number">
           <End Role="CallShedule" Type="Self.CallShedule" Multiplicity="1" />
@@ -616,7 +614,6 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.User)">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
