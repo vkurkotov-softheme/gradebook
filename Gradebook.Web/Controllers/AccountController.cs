@@ -64,23 +64,29 @@ namespace Gradebook.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var modelDto = new TeacherDto
+                if (ModelState.IsValid)
                 {
-                    FirstName = model.FirstName,
-                    Email = model.Email,
-                    BirthDate = model.BirthDate,
-                    IsAdministrator = model.IsAdministrator,
-                    LastName = model.LastName,
-                    MiddleName = model.MiddleName,
-                    Password = model.Password,
-                    UserType = model.UserType
-                };
+                    var modelDto = new TeacherDto
+                    {
+                        FirstName = model.FirstName,
+                        Email = model.Email,
+                        BirthDate = model.BirthDate,
+                        IsAdministrator = model.IsAdministrator,
+                        LastName = model.LastName,
+                        MiddleName = model.MiddleName,
+                        Password = model.Password,
+                        UserType = model.UserType
+                    };
 
-                _userService.CreateTeacher(modelDto);
+                    _userService.CreateTeacher(modelDto);
+                }
             }
-            
+            catch (Exception e)
+            {
+                ViewBag.Exception = e;
+            }
             return View(model);
         }
 

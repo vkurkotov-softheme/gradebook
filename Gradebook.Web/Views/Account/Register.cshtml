@@ -72,6 +72,19 @@
     </div>
 }
 
+@{
+    var exception = ViewBag.Exception as Exception;
+}
+
+@if (exception != null)
+{
+    @(exception.Message)
+    if (exception.InnerException != null)
+    {
+  @(exception.InnerException.Message)
+    }
+}
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
