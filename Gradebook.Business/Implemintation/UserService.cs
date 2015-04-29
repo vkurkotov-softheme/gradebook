@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Gradebook.Business.Enums;
+using Gradebook.Business.Exceptions;
 using Gradebook.Business.Helpers;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
@@ -77,7 +79,7 @@ namespace Gradebook.Business.Implemintation
 
             if (user == null)
             {
-                throw new ObjectNotFoundException(string.Format(i18n.UserNotFoundException, email));
+                throw new UserNotFoundException(string.Format(i18n.UserNotFoundException, email));
             }
 
             return user;
@@ -87,6 +89,26 @@ namespace Gradebook.Business.Implemintation
         {
             user.LastLogin = DateTime.UtcNow;
             _entities.SaveChanges();
+        }
+
+        public UserType GetUserType(string email)
+        {
+            if (_entities.Teachers.Any(t => t.Email == email))
+            {
+                return UserType.Teacher;
+            }
+
+            if (_entities.Pupils.Any(p => p.Email == email))
+            {
+                return UserType.Pupil;
+            }
+
+            if (_entities.Parents.Any(p => p.Email == email))
+            {
+                return UserType.Parent;
+            }
+
+            throw new UserNotFoundException(string.Format(i18n.UserNotFoundException, email));
         }
     }
 }

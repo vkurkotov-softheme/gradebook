@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Security;
+using Gradebook.Business.Enums;
 using Gradebook.Business.Helpers;
 using Gradebook.DAL.EF;
 using Gradebook.Translations;
@@ -12,12 +13,12 @@ namespace Gradebook.Web.Common.FormsAuthentification
 {
     public class FormsAuthenticationService : IFormsAuthenticationService
     {
-        public void SignIn(User user, bool createPersistentCookie)
+        public void SignIn(User user, bool createPersistentCookie, UserType userType)
         {
-            SetAuthCookie(user, createPersistentCookie);
+            SetAuthCookie(user, createPersistentCookie, userType);
         }
 
-        public void ReissueTicket(User user, HttpResponseBase response)
+        public void ReissueTicket(User user, HttpResponseBase response, UserType userType)
         {
             AssertHelper.AssertNotNull(user.Email, "userName", i18n.ValueCannotBeNullOrEmpty);
 
@@ -26,7 +27,7 @@ namespace Gradebook.Web.Common.FormsAuthentification
 
             var isPersistent = oldTicket.Expiration != DateTime.MinValue;
 
-            SetAuthCookie(user, isPersistent);
+            SetAuthCookie(user, isPersistent, userType);
         }
 
         public void SignOut()
@@ -47,21 +48,17 @@ namespace Gradebook.Web.Common.FormsAuthentification
             FormsAuthentication.RedirectToLoginPage();
         }
 
-        private static void SetAuthCookie(User user, bool isPersistent)
+        private static void SetAuthCookie(User user, bool isPersistent, UserType userType)
         {
             AssertHelper.AssertNotNull(user.Email, "userName", i18n.ValueCannotBeNullOrEmpty);
 
             var serializeModel = new GradebookPrincipalSerializeModel
             {
-                CultureName = user.Language,
+                CultureName = user.Language ?? "uk-UA",
                 Email = user.Email,
-                UserId = user.Id
+                UserId = user.Id,
+                UserTypeCode = (int)userType
             };
-
-            switch (user.)
-            {
-                    
-            }
 
             var userData = JsonConvert.SerializeObject(serializeModel);
 

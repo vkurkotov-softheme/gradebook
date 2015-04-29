@@ -28,7 +28,7 @@ namespace Gradebook.Web.Common.GradebookPrincipalService
 
         public int UserId { get; set; }
 
-        public int UserRoleCode { get; set; }
+        public int UserTypeCode { get; set; }
 
         public CultureInfo Culture
         {
@@ -38,8 +38,8 @@ namespace Gradebook.Web.Common.GradebookPrincipalService
 
         public UserRole UserRole
         {
-            get { return (UserRole)UserRoleCode; }
-            set { UserRoleCode = (int)value; }
+            get { return (UserRole)UserTypeCode; }
+            set { UserTypeCode = (int)value; }
         }
     }
 }

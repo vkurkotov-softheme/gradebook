@@ -13,6 +13,6 @@ namespace Gradebook.Web.Common.GradebookPrincipalService
 
         public int UserId { get; set; }
 
-        public int UserRoleCode { get; set; }
+        public int UserTypeCode { get; set; }
     }
 }

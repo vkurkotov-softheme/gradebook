@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Gradebook.Business.Enums;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
 using Gradebook.DAL.EF;
@@ -47,7 +48,8 @@ namespace Gradebook.Web.Controllers
                 if (_userService.ValidateUser(model.Email, model.Password))
                 {
                     var user = _userService.GetUser(model.Email);
-                    SignIn(user, model.RememberMe);
+                    var userType = _userService.GetUserType(model.Email);
+                    SignIn(user, model.RememberMe, userType);
                     _userService.UpdateLastLoginTime(user);
                 }
                 return View(model);
@@ -103,9 +105,9 @@ namespace Gradebook.Web.Controllers
             return code == null ? View("Error") : View();
         }
 
-        private void SignIn(User user, bool rememberMe)
+        private void SignIn(User user, bool rememberMe, UserType userType)
         {
-            _formsService.SignIn(user, rememberMe);
+            _formsService.SignIn(user, rememberMe, userType);
         }
     }
 }
