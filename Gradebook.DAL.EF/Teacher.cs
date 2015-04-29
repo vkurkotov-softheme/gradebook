@@ -22,7 +22,7 @@ namespace Gradebook.DAL.EF
         }
     
         public string JobTitle { get; set; }
-        public Nullable<bool> IsAdministrator { get; set; }
+        public bool IsAdministrator { get; set; }
     
         public virtual ICollection<Mark> Marks { get; set; }
         public virtual ICollection<LessonShedule> Lessons { get; set; }

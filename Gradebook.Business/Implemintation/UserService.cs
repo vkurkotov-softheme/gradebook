@@ -66,7 +66,9 @@ namespace Gradebook.Business.Implemintation
             AssertHelper.AssertNotNull(email, "email", "email field is not passed");
             AssertHelper.AssertNotNull(password, "password", "password field is not passed");
 
-            var user = _entities.Users.FirstOrDefault(u => u.Email == email && u.PasswordHash == MD5Helper.GetPasswordHash(password));
+            var passwordHash = MD5Helper.GetPasswordHash(password);
+
+            var user = _entities.Users.FirstOrDefault(u => u.Email == email && u.PasswordHash == passwordHash);
 
             return user != null;
         }

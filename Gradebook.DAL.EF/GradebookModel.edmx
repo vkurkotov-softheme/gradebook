@@ -275,16 +275,6 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="GetUserType_Function" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="email" Type="nvarchar" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <EntityContainer Name="GradebookModelStoreContainer">
           <EntitySet Name="CallShedule" EntityType="Self.CallShedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
@@ -533,7 +523,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <NavigationProperty Name="Grade" Relationship="GradebookModel.TeacherGrade" FromRole="Teacher" ToRole="Grade" />
           <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Subjects" Relationship="GradebookModel.TeacherSubject" FromRole="Teacher" ToRole="Subject" />
-          <Property Name="IsAdministrator" Type="Boolean" />
+          <Property Name="IsAdministrator" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="MarkPupil">
           <End Type="GradebookModel.Mark" Role="Mark" Multiplicity="*" />
@@ -765,7 +755,6 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
               <ScalarProperty Name="Id" ColumnName="TeacherId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="GetUserType_Function" FunctionName="GradebookModel.Store.GetUserType_Function" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

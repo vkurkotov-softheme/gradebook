@@ -82,7 +82,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Holiday.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\Mark.sql" />
     <Build Include="Schema Objects\Schemas\dbo\Tables\LessonShedule.sql" />
-    <Build Include="Schema Objects\Schemas\dbo\Programmability\Functions\GetUserType_Function.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Gradebook.Database.refactorlog" />

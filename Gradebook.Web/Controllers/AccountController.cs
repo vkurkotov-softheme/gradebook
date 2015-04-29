@@ -20,30 +20,38 @@ namespace Gradebook.Web.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
+        #region Private Fields
+
         private readonly IUserService _userService;
         private readonly IFormsAuthenticationService _formsService;
-        
+
+        #endregion
+
+        #region Constructor
+
         public AccountController(IUserService userService, IFormsAuthenticationService formsService)
         {
             _userService = userService;
             _formsService = formsService;
         }
 
-        //
-        // GET: /Account/Login
-        public ActionResult Login(string returnUrl)
+        #endregion
+
+        #region Action Methods
+
+        #region Log In
+
+        public ActionResult LogIn(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
-        //
-        // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public ActionResult LogIn(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (_userService.ValidateUser(model.Email, model.Password))
                 {
@@ -58,15 +66,26 @@ namespace Gradebook.Web.Controllers
             return null;
         }
 
-        //
-        // GET: /Account/Register
+        #endregion
+
+        #region Log Out
+
+        public ActionResult LogOut()
+        {
+            _formsService.SignOut();
+            return RedirectToAction("LogIn", "Account");
+        }
+
+        #endregion
+
+
+        #region Register
+
         public ActionResult Register()
         {
             return View();
         }
 
-        //
-        // POST: /Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
@@ -91,23 +110,31 @@ namespace Gradebook.Web.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ForgotPasswordConfirmation
+        #endregion
+
+        #region Reset Password
+
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
         }
 
-        //
-        // GET: /Account/ResetPassword
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
         }
 
+        #endregion
+
+        #endregion
+
+        #region Private Methods
+
         private void SignIn(User user, bool rememberMe, UserType userType)
         {
             _formsService.SignIn(user, rememberMe, userType);
         }
+
+        #endregion
     }
 }
