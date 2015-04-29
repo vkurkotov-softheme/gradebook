@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.Core;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -97,7 +98,10 @@ namespace Gradebook.Business.Implemintation
         {
             if (_entities.Teachers.Any(t => t.Email == email))
             {
-                return UserType.Teacher;
+                var user = _entities.Teachers.FirstOrDefault(t => t.Email == email);
+                AssertHelper.AssertNotNull(user, "user", string.Format(i18n.UserNotFoundException, email));
+
+                return user.IsAdministrator ? UserType.Administrator : UserType.Teacher;
             }
 
             if (_entities.Pupils.Any(p => p.Email == email))

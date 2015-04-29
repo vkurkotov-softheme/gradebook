@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Web.Security;
 
 namespace Gradebook.Web.Helpers
 {
@@ -12,9 +11,9 @@ namespace Gradebook.Web.Helpers
             return new HttpCookie(key, value)
             {
                 HttpOnly = true,
-                Path = System.Web.Security.FormsAuthentication.FormsCookiePath,
-                Secure = System.Web.Security.FormsAuthentication.RequireSSL,
-                Domain = System.Web.Security.FormsAuthentication.CookieDomain,
+                Path = FormsAuthentication.FormsCookiePath,
+                Secure = FormsAuthentication.RequireSSL,
+                Domain = FormsAuthentication.CookieDomain,
                 Expires = expires
             };
         }

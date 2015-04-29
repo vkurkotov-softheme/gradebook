@@ -11,11 +11,14 @@ namespace Gradebook.Business.Enums
 {
     public enum UserType
     {
+        None = 0,
         [Display(ResourceType = typeof(i18n), Name = "Pupil")]
-        Pupil,
+        Pupil = 1,
         [Display(ResourceType = typeof(i18n), Name = "Parent")]
-        Parent,
+        Parent = 2,
         [Display(ResourceType = typeof(i18n), Name = "Teacher")]
-        Teacher
+        Teacher = 3,
+        [Display(ResourceType = typeof(i18n), Name = "Administrator")]
+        Administrator = 4
     }
 }

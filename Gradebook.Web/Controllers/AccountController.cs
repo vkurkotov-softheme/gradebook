@@ -1,18 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Gradebook.Business.Enums;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
 using Gradebook.DAL.EF;
 using Gradebook.Web.Common.FormsAuthentification;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using Gradebook.Web.Models;
 
 namespace Gradebook.Web.Controllers
@@ -57,6 +48,7 @@ namespace Gradebook.Web.Controllers
                 {
                     var user = _userService.GetUser(model.Email);
                     var userType = _userService.GetUserType(model.Email);
+
                     SignIn(user, model.RememberMe, userType);
                     _userService.UpdateLastLoginTime(user);
                 }

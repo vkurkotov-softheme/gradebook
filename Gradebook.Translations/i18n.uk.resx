@@ -171,4 +171,13 @@
   <data name="ValueCannotBeNullOrEmpty" xml:space="preserve">
     <value>Значення не може бути пустим або відсутнім.</value>
   </data>
+  <data name="Gradebook" xml:space="preserve">
+    <value>Журнал успішності</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Вихід</value>
+  </data>
 </root>

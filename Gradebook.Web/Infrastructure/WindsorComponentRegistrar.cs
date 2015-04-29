@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Gradebook.Business.Implemintation;

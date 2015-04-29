@@ -1,7 +1,8 @@
-﻿using Microsoft.Owin;
+﻿using Gradebook.Web;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Gradebook.Web.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 namespace Gradebook.Web
 {
     public partial class Startup

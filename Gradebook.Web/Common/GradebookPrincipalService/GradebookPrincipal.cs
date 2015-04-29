@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Security.Principal;
-using System.Web;
-using Gradebook.Web.Enums;
+using Gradebook.Business.Enums;
 
 namespace Gradebook.Web.Common.GradebookPrincipalService
 {
@@ -36,9 +33,9 @@ namespace Gradebook.Web.Common.GradebookPrincipalService
             set { CultureName = value.Name; }
         }
 
-        public UserRole UserRole
+        public UserType UserType
         {
-            get { return (UserRole)UserTypeCode; }
+            get { return (UserType)UserTypeCode; }
             set { UserTypeCode = (int)value; }
         }
     }
