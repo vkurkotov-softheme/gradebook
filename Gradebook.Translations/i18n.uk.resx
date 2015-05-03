@@ -180,4 +180,19 @@
   <data name="LogOut" xml:space="preserve">
     <value>Вихід</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запамя'тати мене?</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Поле "{0}" має невірний формат електронної пошти</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Поле "{0}" - обов'язкове</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Увійти</value>
+  </data>
+  <data name="IncorrectLoginOrPassword" xml:space="preserve">
+    <value>Невірно введений e-mail або пароль.</value>
+  </data>
 </root>

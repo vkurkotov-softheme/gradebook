@@ -115,6 +115,24 @@ namespace Gradebook.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The email or password that was provided is incorrect..
+        /// </summary>
+        public static string IncorrectLoginOrPassword {
+            get {
+                return ResourceManager.GetString("IncorrectLoginOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} field is not a valid e-mail address..
+        /// </summary>
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LastName {
@@ -192,6 +210,33 @@ namespace Gradebook.Translations {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember me?.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} field is required..
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign in.
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
             }
         }
         

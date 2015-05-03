@@ -1,8 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Authentication;
+using System.Web.Mvc;
 using Gradebook.Business.Enums;
+using Gradebook.Business.Exceptions;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
 using Gradebook.DAL.EF;
+using Gradebook.Translations;
 using Gradebook.Web.Common.FormsAuthentification;
 using Gradebook.Web.Models;
 
@@ -51,11 +54,21 @@ namespace Gradebook.Web.Controllers
 
                     SignIn(user, model.RememberMe, userType);
                     _userService.UpdateLastLoginTime(user);
+
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Home");
                 }
-                return View(model);
+                else
+                {
+                    ModelState.AddModelError("", i18n.IncorrectLoginOrPassword);
+                }
             }
 
-            return null;
+            return View(model);
         }
 
         #endregion

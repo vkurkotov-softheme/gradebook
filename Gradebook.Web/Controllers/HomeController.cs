@@ -12,11 +12,13 @@ namespace Gradebook.Web.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
