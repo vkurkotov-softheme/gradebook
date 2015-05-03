@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
+using Gradebook.Business.Enums;
 using Gradebook.Business.Interfaces;
+using Gradebook.Web.Common.CustomAttributes;
 
 namespace Gradebook.Web.Controllers
 {
@@ -18,7 +20,6 @@ namespace Gradebook.Web.Controllers
             return View();
         }
 
-        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

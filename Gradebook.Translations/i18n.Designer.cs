@@ -97,6 +97,15 @@ namespace Gradebook.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string FirstName {
@@ -165,6 +174,15 @@ namespace Gradebook.Translations {
         public static string MiddleName {
             get {
                 return ResourceManager.GetString("MiddleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not authorized to view this page..
+        /// </summary>
+        public static string NotAuthorizedException {
+            get {
+                return ResourceManager.GetString("NotAuthorizedException", resourceCulture);
             }
         }
         

@@ -195,4 +195,10 @@
   <data name="IncorrectLoginOrPassword" xml:space="preserve">
     <value>Невірно введений e-mail або пароль.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="NotAuthorizedException" xml:space="preserve">
+    <value>У Вас немає прав для перегляду цієї сторінки.</value>
+  </data>
 </root>
