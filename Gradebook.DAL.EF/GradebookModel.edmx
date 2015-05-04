@@ -88,7 +88,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="254" />
           <Property Name="PasswordHash" Type="char" MaxLength="32" />
           <Property Name="LastLogin" Type="datetime" />
-          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="BirthDate" Type="date" />
           <Property Name="LastName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="35" Nullable="false" />
@@ -103,6 +103,7 @@
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsParent" Type="bit" />
           <Property Name="IsAdministrator" Type="bit" />
+          <Property Name="Language" Type="nvarchar" MaxLength="8" />
         </EntityType>
         <Association Name="FK_Grade_FormMaster_To_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -415,7 +416,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="PasswordHash" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="LastLogin" Type="DateTime" Precision="3" />
-          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="true" Precision="0" />
           <Property Name="LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
@@ -424,6 +425,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="Phone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="HomePhone" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK_LessonShedule_LessonNumber_Number">
           <End Role="CallShedule" Type="Self.CallShedule" Multiplicity="1" />
@@ -501,6 +503,9 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             <End Role="Teacher" EntitySet="Users" />
             <End Role="Subject" EntitySet="Subjects" />
           </AssociationSet>
+          <FunctionImport Name="GetUserType_Function" IsComposable="true" ReturnType="Collection(String)">
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Pupil" BaseType="GradebookModel.User" >
           <NavigationProperty Name="Marks" Relationship="GradebookModel.MarkPupil" FromRole="Pupil" ToRole="Mark" />
@@ -613,6 +618,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.User)">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />

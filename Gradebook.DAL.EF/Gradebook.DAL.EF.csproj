@@ -51,6 +51,7 @@
     <Compile Include="CallShedule.cs">
       <DependentUpon>GradebookModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\EntitiesExtended.cs" />
     <Compile Include="Grade.cs">
       <DependentUpon>GradebookModel.tt</DependentUpon>
     </Compile>

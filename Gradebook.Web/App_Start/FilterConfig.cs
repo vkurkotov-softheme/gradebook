@@ -1,5 +1,5 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Gradebook.Web.Common.Filters;
 
 namespace Gradebook.Web
 {
@@ -8,6 +8,7 @@ namespace Gradebook.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AsyncAwareHandleErrorAttribute());
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿@using System.Globalization
+@using Gradebook.DAL.EF
+@model Gradebook.Web.Models.Admin.AddTeacherModel
+
+@{
+    ViewBag.Title = i18n.AddTeacher;
+    var teachers = (IEnumerable<Teacher>)ViewBag.Teachers;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Ajax.BeginForm("AddTeacher", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, null, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = i18n.LastName })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = i18n.FirstName })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MiddleName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control", placeholder = i18n.MiddleName })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.JobTitle, new {@class = "col-md-2 control-label"})
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.JobTitle, new {@class = "form-control", placeholder = i18n.JobTitle})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-6">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.IsAdministrator)@i18n.Administrator
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1">
+            <input type="submit" class="btn btn-default" value="@i18n.Add"/>
+        </div>
+        <div class="col-md-1">
+            <input type="reset" value="@i18n.Clear" class="btn" />
+        </div>
+    </div>
+}
+
+@if (teachers.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>@i18n.LastName</th>
+                <th>@i18n.FirstName</th>
+                <th>@i18n.MiddleName</th>
+                <th>@i18n.JobTitle</th>
+            </tr>
+            @foreach (var teacher in teachers.OrderBy(t => t.LastName))
+            {
+                <tr>
+                    <td>@teacher.LastName</td>
+                    <td>@teacher.FirstName</td>
+                    <td>@teacher.MiddleName</td>
+                    <td>@teacher.JobTitle @(teacher.IsAdministrator ? string.Format("({0})",i18n.Administrator) : string.Empty)</td>
+                </tr>
+            }
+        </table>
+    </div>
+}

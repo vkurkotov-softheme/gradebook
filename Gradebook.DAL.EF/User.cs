@@ -18,7 +18,7 @@ namespace Gradebook.DAL.EF
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
-        public System.DateTime BirthDate { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -27,5 +27,6 @@ namespace Gradebook.DAL.EF
         public string Phone { get; set; }
         public string HomePhone { get; set; }
         public bool Deleted { get; set; }
+        public string Language { get; set; }
     }
 }

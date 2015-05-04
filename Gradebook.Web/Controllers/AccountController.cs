@@ -1,66 +1,97 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Security.Authentication;
 using System.Web.Mvc;
+using Gradebook.Business.Enums;
+using Gradebook.Business.Exceptions;
 using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+using Gradebook.DAL.EF;
+using Gradebook.Translations;
+using Gradebook.Web.Common.FormsAuthentification;
 using Gradebook.Web.Models;
 
 namespace Gradebook.Web.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class AccountController : Controller
     {
-        private IUserService _userService;
-        
-        public AccountController(IUserService userService)
+        #region Private Fields
+
+        private readonly IUserService _userService;
+        private readonly IFormsAuthenticationService _formsService;
+
+        #endregion
+
+        #region Constructor
+
+        public AccountController(IUserService userService, IFormsAuthenticationService formsService)
         {
             _userService = userService;
+            _formsService = formsService;
         }
 
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        #endregion
+
+        #region Action Methods
+
+        #region Log In
+
+        public ActionResult LogIn(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
-        //
-        // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public ActionResult LogIn(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                if (_userService.ValidateUser(model.Email, model.Password))
+                {
+                    var user = _userService.GetUser(model.Email);
+                    var userType = _userService.GetUserType(model.Email);
+
+                    SignIn(user, model.RememberMe, userType);
+                    _userService.UpdateLastLoginTime(user);
+
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", i18n.IncorrectLoginOrPassword);
+                }
             }
 
-            return null;
+            return View(model);
         }
 
+        #endregion
 
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
+        #region Log Out
+
+        public ActionResult LogOut()
+        {
+            _formsService.SignOut();
+            return RedirectToAction("LogIn", "Account");
+        }
+
+        #endregion
+
+
+        #region Register
+
         public ActionResult Register()
         {
             return View();
         }
 
-        //
-        // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
@@ -84,20 +115,31 @@ namespace Gradebook.Web.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ForgotPasswordConfirmation
-        [AllowAnonymous]
+        #endregion
+
+        #region Reset Password
+
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
         }
 
-        //
-        // GET: /Account/ResetPassword
-        [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
         }
+
+        #endregion
+
+        #endregion
+
+        #region Private Methods
+
+        private void SignIn(User user, bool rememberMe, UserType userType)
+        {
+            _formsService.SignIn(user, rememberMe, userType);
+        }
+
+        #endregion
     }
 }

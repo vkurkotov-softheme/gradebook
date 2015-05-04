@@ -21,8 +21,10 @@ namespace Gradebook.Business.Public_Data_Contracts
 
         public UserType UserType { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public bool IsAdministrator { get; set; }
+
+        public string JobTitle { get; set; }
     }
 }

@@ -12,6 +12,8 @@ namespace Gradebook.DAL.EF
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Entities : DbContext
     {
@@ -32,5 +34,15 @@ namespace Gradebook.DAL.EF
         public virtual DbSet<Mark> Marks { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        [DbFunction("Entities", "GetUserType_Function")]
+        public virtual IQueryable<string> GetUserType_Function(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[Entities].[GetUserType_Function](@email)", emailParameter);
+        }
     }
 }

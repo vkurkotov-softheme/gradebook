@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Gradebook.Business.Enums;
 using Gradebook.Business.Interfaces;
-using Gradebook.Business.Public_Data_Contracts;
+using Gradebook.Web.Common.CustomAttributes;
 
 namespace Gradebook.Web.Controllers
 {
@@ -17,6 +14,7 @@ namespace Gradebook.Web.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View();
