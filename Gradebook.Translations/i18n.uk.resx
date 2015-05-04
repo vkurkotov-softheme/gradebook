@@ -220,4 +220,13 @@
   <data name="Teachers" xml:space="preserve">
     <value>Вчителі</value>
   </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Предмет</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Предмети</value>
+  </data>
+  <data name="SubjectAlreadyExistsException" xml:space="preserve">
+    <value>Предмет "{0}" вже існує.</value>
+  </data>
 </root>

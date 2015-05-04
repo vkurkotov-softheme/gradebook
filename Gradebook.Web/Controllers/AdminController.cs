@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Gradebook.Business.Enums;
-using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
+using Gradebook.Business.Services;
 using Gradebook.DAL.EF;
 using Gradebook.Web.Common.CustomAttributes;
 using Gradebook.Web.Models.Admin;
@@ -14,10 +14,12 @@ namespace Gradebook.Web.Controllers
     public class AdminController : Controller
     {
         private readonly IUserService _userService;
+        private readonly ISubjectService _subjectService;
 
-        public AdminController(IUserService userService)
+        public AdminController(IUserService userService, ISubjectService subjectService)
         {
             _userService = userService;
+            _subjectService = subjectService;
         }
 
         public ActionResult AddTeacher()
@@ -51,6 +53,32 @@ namespace Gradebook.Web.Controllers
             }
 
             ViewBag.Teachers = _userService.GetTeachers();
+            return View(model);
+        }
+
+        public ActionResult Subjects()
+        {
+            ViewBag.Subjects = _subjectService.GetSubjects();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Subjects(AddSubjectModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _subjectService.AddSubject(new SubjectDto {SubjectName = model.Subject});
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                }
+                
+            }
+            ViewBag.Subjects = _subjectService.GetSubjects();
             return View(model);
         }
     }

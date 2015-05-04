@@ -220,4 +220,13 @@
   <data name="Teachers" xml:space="preserve">
     <value>Teachers</value>
   </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Subjects</value>
+  </data>
+  <data name="SubjectAlreadyExistsException" xml:space="preserve">
+    <value>Subject "{0}" already exists.</value>
+  </data>
 </root>

@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using Gradebook.Business.Enums;
 using Gradebook.Business.Exceptions;
-using Gradebook.Business.Interfaces;
 using Gradebook.Business.Public_Data_Contracts;
+using Gradebook.Business.Services;
 using Gradebook.DAL.EF;
 using Gradebook.Translations;
 using Gradebook.Web.Common.FormsAuthentification;

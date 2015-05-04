@@ -4,6 +4,7 @@ using Gradebook.Web.Common.GradebookPrincipalService;
 
 namespace Gradebook.Web.Controllers
 {
+    [ChildActionOnly]
     public class NavigationController : Controller
     {
         public ActionResult LeftMenu()
