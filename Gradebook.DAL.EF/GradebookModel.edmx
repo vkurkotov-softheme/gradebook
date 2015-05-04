@@ -447,7 +447,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
           <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="CallShedules" EntityType="Self.CallShedule" />
           <EntitySet Name="Grades" EntityType="Self.Grade" />
           <EntitySet Name="Holidays" EntityType="Self.Holiday" />

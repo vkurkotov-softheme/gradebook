@@ -9,7 +9,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Ajax.BeginForm("AddTeacher", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, null, new { @class = "form-horizontal", role = "form" }))
+@using (Ajax.BeginForm("AddTeacher", "Admin", null, null, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })

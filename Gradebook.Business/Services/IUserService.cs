@@ -3,7 +3,7 @@ using Gradebook.Business.Enums;
 using Gradebook.Business.Public_Data_Contracts;
 using Gradebook.DAL.EF;
 
-namespace Gradebook.Business.Interfaces
+namespace Gradebook.Business.Services
 {
     public interface IUserService
     {
