@@ -168,7 +168,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Common\Binders\TrimModelBinder.cs" />
     <Compile Include="Common\CustomAttributes\LevelAuthorizeAttribute.cs" />
+    <Compile Include="Common\CustomAttributes\LocalizedRequiredAttribute.cs" />
     <Compile Include="Common\Filters\AsyncAwareHandleErrorAttribute.cs" />
     <Compile Include="Common\FormsAuthentification\FormsAuthenticationService.cs" />
     <Compile Include="Common\FormsAuthentification\IFormsAuthenticationService.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Infrastructure\WindsorComponentRegistrar.cs" />
     <Compile Include="Infrastructure\WindsorControllerFactory.cs" />
     <Compile Include="Models\Account\ForgotViewModel.cs" />
+    <Compile Include="Models\Admin\AddTeacherModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -277,18 +280,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\Jquery\jquery-1.10.2.min.map" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Navigation\LeftMenu.cshtml" />
@@ -300,7 +293,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Enums\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

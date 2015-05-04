@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using Gradebook.Web.Common.Binders;
 using Gradebook.Web.Common.FormsAuthentification;
 using Gradebook.Web.Common.GradebookPrincipalService;
 using Gradebook.Web.Infrastructure;
@@ -32,6 +33,7 @@ namespace Gradebook.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(string), new TrimModelBinder());
         }
 
         protected void Application_End()

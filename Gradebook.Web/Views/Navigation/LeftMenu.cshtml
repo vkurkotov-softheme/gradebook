@@ -25,7 +25,9 @@
 @if (Model == UserType.Teacher || Model == UserType.Administrator)
 {
     <ul class="nav nav-sidebar">
-        <li><a href="">Nav item again</a></li>
+        <li>
+            @Html.ActionLink(i18n.Teachers, "AddTeacher", "Admin")
+        </li>
         <li><a href="">One more nav</a></li>
         <li><a href="">Another nav item</a></li>
     </ul>

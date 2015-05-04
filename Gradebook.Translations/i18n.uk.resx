@@ -201,4 +201,23 @@
   <data name="NotAuthorizedException" xml:space="preserve">
     <value>У Вас немає прав для перегляду цієї сторінки.</value>
   </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Посада</value>
+  </data>
+  <data name="AddTeacher" xml:space="preserve">
+    <value>Додати вчителя</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Очистити</value>
+  </data>
+  <data name="UserAlreadyExistsException" xml:space="preserve">
+    <value>Користувач "{1} {0} {2}" вже існує.</value>
+    <comment>0 - First name, 1 - Last name, 2 - Middle name</comment>
+  </data>
+  <data name="Teachers" xml:space="preserve">
+    <value>Вчителі</value>
+  </data>
 </root>

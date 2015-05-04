@@ -61,6 +61,24 @@ namespace Gradebook.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add teacher.
+        /// </summary>
+        public static string AddTeacher {
+            get {
+                return ResourceManager.GetString("AddTeacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrator.
         /// </summary>
         public static string Administrator {
@@ -75,6 +93,15 @@ namespace Gradebook.Translations {
         public static string BirthDate {
             get {
                 return ResourceManager.GetString("BirthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string Clear {
+            get {
+                return ResourceManager.GetString("Clear", resourceCulture);
             }
         }
         
@@ -138,6 +165,15 @@ namespace Gradebook.Translations {
         public static string InvalidEmail {
             get {
                 return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job title.
+        /// </summary>
+        public static string JobTitle {
+            get {
+                return ResourceManager.GetString("JobTitle", resourceCulture);
             }
         }
         
@@ -282,6 +318,24 @@ namespace Gradebook.Translations {
         public static string Teacher {
             get {
                 return ResourceManager.GetString("Teacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teachers.
+        /// </summary>
+        public static string Teachers {
+            get {
+                return ResourceManager.GetString("Teachers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User &quot;{0} {1} {2}&quot; already exists..
+        /// </summary>
+        public static string UserAlreadyExistsException {
+            get {
+                return ResourceManager.GetString("UserAlreadyExistsException", resourceCulture);
             }
         }
         

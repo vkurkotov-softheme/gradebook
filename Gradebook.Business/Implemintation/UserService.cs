@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Diagnostics;
 using System.Globalization;
@@ -115,6 +116,34 @@ namespace Gradebook.Business.Implemintation
             }
 
             throw new UserNotFoundException(string.Format(i18n.UserNotFoundException, email));
+        }
+
+        public IEnumerable<Teacher> GetTeachers()
+        {
+            return _entities.Teachers.Where(t => !t.Deleted);
+        }
+
+        public void AddTeacher(TeacherDto teacherDto)
+        {
+            if (_entities.Teachers.Any(t => t.FirstName == teacherDto.FirstName 
+                                         && t.LastName == teacherDto.LastName
+                                         && t.MiddleName == teacherDto.MiddleName
+                                         && t.BirthDate == teacherDto.BirthDate
+                                         && t.IsAdministrator == teacherDto.IsAdministrator))
+            {
+                throw new UserAlreadyExistsException(string.Format(i18n.UserAlreadyExistsException, teacherDto.FirstName, teacherDto.LastName, teacherDto.MiddleName));
+            }
+
+            _entities.Users.Add(new Teacher
+            {
+                FirstName = teacherDto.FirstName,
+                LastName = teacherDto.LastName,
+                MiddleName = teacherDto.MiddleName,
+                BirthDate = teacherDto.BirthDate,
+                IsAdministrator = teacherDto.IsAdministrator,
+                JobTitle = teacherDto.JobTitle
+            });
+            _entities.SaveChanges();
         }
     }
 }

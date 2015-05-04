@@ -88,7 +88,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="254" />
           <Property Name="PasswordHash" Type="char" MaxLength="32" />
           <Property Name="LastLogin" Type="datetime" />
-          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="BirthDate" Type="date" />
           <Property Name="LastName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="35" Nullable="false" />
@@ -416,7 +416,7 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
           <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="PasswordHash" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="LastLogin" Type="DateTime" Precision="3" />
-          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="true" Precision="0" />
           <Property Name="LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Exceptions\NotAuthorizedException.cs" />
+    <Compile Include="Exceptions\UserAlreadyExistsException.cs" />
     <Compile Include="Exceptions\UserNotFoundException.cs" />
     <Compile Include="Helpers\AssertHelper.cs" />
     <Compile Include="Helpers\MD5Helper.cs" />

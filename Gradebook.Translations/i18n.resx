@@ -201,4 +201,23 @@
   <data name="NotAuthorizedException" xml:space="preserve">
     <value>You are not authorized to view this page.</value>
   </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Job title</value>
+  </data>
+  <data name="AddTeacher" xml:space="preserve">
+    <value>Add teacher</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="UserAlreadyExistsException" xml:space="preserve">
+    <value>User "{0} {1} {2}" already exists.</value>
+    <comment>0 - First name, 1 - Last name, 2 - Middle name</comment>
+  </data>
+  <data name="Teachers" xml:space="preserve">
+    <value>Teachers</value>
+  </data>
 </root>
