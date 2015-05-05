@@ -290,7 +290,7 @@
     <Content Include="Views\Shared\ErrorDialog.cshtml" />
     <Content Include="Views\Admin\AddTeacher.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
-    <None Include="Views\Admin\Subjects.cshtml" />
+    <Content Include="Views\Admin\Subjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
