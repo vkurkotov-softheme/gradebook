@@ -26,7 +26,8 @@ namespace Gradebook.Web.Infrastructure
                 Component.For<IUserService>().ImplementedBy<UserService>().LifestylePerWebRequest(),
                 Component.For<Entities>().LifestylePerWebRequest(),
                 Component.For<IFormsAuthenticationService>().ImplementedBy<FormsAuthenticationService>().LifestylePerWebRequest(),
-                Component.For<ISubjectService>().ImplementedBy<SubjectService>().LifestylePerWebRequest()
+                Component.For<ISubjectService>().ImplementedBy<SubjectService>().LifestylePerWebRequest(),
+                Component.For<IGradeService>().ImplementedBy<GradeService>().LifestylePerWebRequest()
                 );
         }
     }

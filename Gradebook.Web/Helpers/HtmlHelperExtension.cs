@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
@@ -47,6 +49,46 @@ namespace Gradebook.Web.Helpers
         }
 
         #endregion
+
+        #region Left Menu Item
+
+        public static MvcHtmlString ListItemAction(this HtmlHelper helper, string linkText, string actionName, string controllerName)
+        {
+            return ListItemAction(helper, linkText, actionName, controllerName, string.Empty);
+        }
+
+        /// <summary>
+        /// Creats menu item that will be highlited if it is on current page
+        /// </summary>
+        /// <param name="helper">Call to @Html</param>
+        /// <param name="linkText">Text inside a tag</param>
+        /// <param name="actionName">Name of action</param>
+        /// <param name="controllerName">Name of controller</param>
+        /// <param name="iconClass">Css class for icon</param>
+        /// <returns>Html string of menu item</returns>
+        public static MvcHtmlString ListItemAction(this HtmlHelper helper, string linkText, string actionName, string controllerName, string iconClass)
+        {
+            var routeData = ((MvcHandler)HttpContext.Current.Handler).RequestContext.RouteData;
+            var currentControllerName = (string)routeData.Values["controller"];
+            var currentActionName = (string)routeData.Values["action"];
+            var sb = new StringBuilder();
+
+            sb.AppendFormat("<li{0}", (currentControllerName.Equals(controllerName, StringComparison.CurrentCultureIgnoreCase) &&
+                                                currentActionName.Equals(actionName, StringComparison.CurrentCultureIgnoreCase)
+                                                    ? " class=\"active\">" : ">"));
+            var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            sb.AppendFormat("<a href=\"{0}\">", url.Action(actionName, controllerName));
+            if (!string.IsNullOrEmpty(iconClass))
+            {
+                sb.AppendFormat("<span class=\"{0}\"></span>", iconClass);
+            }
+
+            sb.AppendFormat("{0}</a>", linkText);
+            sb.Append("</li>");
+            return new MvcHtmlString(sb.ToString());
+        }
+
+        #endregion 
 
         #region Private Methods
 

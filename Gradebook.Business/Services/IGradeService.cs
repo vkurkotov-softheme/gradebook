@@ -4,10 +4,10 @@ using Gradebook.DAL.EF;
 
 namespace Gradebook.Business.Services
 {
-    public interface ISubjectService
+    public interface IGradeService
     {
-        IEnumerable<Subject> GetSubjects();
+        IEnumerable<Grade> GetGradesWithGradeMasters();
 
-        void AddSubject(SubjectDto subjectDto);
+        void AddGrade(GradeDto gradeDto);
     }
 }

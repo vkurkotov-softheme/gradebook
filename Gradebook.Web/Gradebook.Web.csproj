@@ -291,6 +291,7 @@
     <Content Include="Views\Admin\AddTeacher.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\Admin\Subjects.cshtml" />
+    <Content Include="Views\Admin\AddGrade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

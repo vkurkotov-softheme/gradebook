@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using Gradebook.Business.Enums;
 using Gradebook.Business.Public_Data_Contracts;
 using Gradebook.Business.Services;
-using Gradebook.DAL.EF;
 using Gradebook.Web.Common.CustomAttributes;
 using Gradebook.Web.Models.Admin;
 
@@ -15,12 +13,16 @@ namespace Gradebook.Web.Controllers
     {
         private readonly IUserService _userService;
         private readonly ISubjectService _subjectService;
+        private readonly IGradeService _gradeService;
 
-        public AdminController(IUserService userService, ISubjectService subjectService)
+        public AdminController(IUserService userService, ISubjectService subjectService, IGradeService gradeService)
         {
             _userService = userService;
             _subjectService = subjectService;
+            _gradeService = gradeService;
         }
+
+        #region Teachers
 
         public ActionResult AddTeacher()
         {
@@ -56,6 +58,10 @@ namespace Gradebook.Web.Controllers
             return View(model);
         }
 
+        #endregion
+
+        #region Subjects
+
         public ActionResult Subjects()
         {
             ViewBag.Subjects = _subjectService.GetSubjects();
@@ -76,10 +82,18 @@ namespace Gradebook.Web.Controllers
                 {
                     ModelState.AddModelError("", e.Message);
                 }
-                
+
             }
             ViewBag.Subjects = _subjectService.GetSubjects();
             return View(model);
+        }
+
+        #endregion
+
+        public ActionResult AddGrade()
+        {
+            ViewBag.Grades = _gradeService.GetGradesWithGradeMasters();
+            return View();
         }
     }
 }
