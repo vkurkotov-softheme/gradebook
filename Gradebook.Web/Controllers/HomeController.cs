@@ -31,5 +31,16 @@ namespace Gradebook.Web.Controllers
 
             return View();
         }
+
+        public ActionResult DivRefresh()
+        {
+            return View();
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public string GetResult(string text)
+        {
+            return text;
+        }
     }
 }

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "DivRefresh";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<input type="text" id="textForMethod"/>
+<button onclick="submitRequestToServer()">Submit</button>
+<div id="updateMe"></div>
+
+<script>
+    function submitRequestToServer() {
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("GetResult", "Home")",
+            data: {text: $("#textForMethod").val()},
+            success: function(response) {
+                $("#updateMe").html(response);;
+            },
+            error: function() {
+                $("#updateMe").html("Error occured");
+            }
+        });
+    }
+</script>
