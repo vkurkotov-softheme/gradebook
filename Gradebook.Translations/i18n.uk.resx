@@ -229,4 +229,10 @@
   <data name="SubjectAlreadyExistsException" xml:space="preserve">
     <value>Предмет "{0}" вже існує.</value>
   </data>
+  <data name="GradeAlreadyExistsException" xml:space="preserve">
+    <value>Клас "{0}" вже існує.</value>
+  </data>
+  <data name="Grades" xml:space="preserve">
+    <value>Класи</value>
+  </data>
 </root>

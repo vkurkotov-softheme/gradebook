@@ -142,11 +142,29 @@ namespace Gradebook.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grade &quot;{0}&quot; already exists..
+        /// </summary>
+        public static string GradeAlreadyExistsException {
+            get {
+                return ResourceManager.GetString("GradeAlreadyExistsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gradebook.
         /// </summary>
         public static string Gradebook {
             get {
                 return ResourceManager.GetString("Gradebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grades.
+        /// </summary>
+        public static string Grades {
+            get {
+                return ResourceManager.GetString("Grades", resourceCulture);
             }
         }
         
