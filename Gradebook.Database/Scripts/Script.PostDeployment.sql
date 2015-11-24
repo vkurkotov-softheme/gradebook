@@ -9,10 +9,7 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-INSERT INTO [dbo].[Grade]
-           ([GradeName]
-           ,[BeginYear])
+INSERT INTO [dbo].[__RefactorLog]
+           ([OperationKey])
      VALUES
-           ('11-B'
-           ,2001
-           )
+           ('5CE68139-2816-45EA-9981-34D9FC5E2F2B')
