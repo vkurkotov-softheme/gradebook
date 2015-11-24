@@ -68,6 +68,7 @@
     <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables" />
     <Folder Include="Schema Objects\Schemas\dbo\Indexes" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.Gradebook.Database.publish.xml" />
@@ -87,5 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Gradebook.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>
