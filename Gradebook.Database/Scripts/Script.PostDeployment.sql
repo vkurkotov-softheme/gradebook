@@ -9,7 +9,3 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-INSERT INTO [dbo].[__RefactorLog]
-           ([OperationKey])
-     VALUES
-           ('5CE68139-2816-45EA-9981-34D9FC5E2F2B')

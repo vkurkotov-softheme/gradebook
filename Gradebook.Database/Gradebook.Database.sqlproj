@@ -73,6 +73,7 @@
   <ItemGroup>
     <None Include="Debug.Gradebook.Database.publish.xml" />
     <None Include="Release.Gradebook.Database.publish.xml" />
+    <None Include="Debug.Pixabit.Gradebook.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema Objects\Schemas\dbo\Tables\User.sql" />

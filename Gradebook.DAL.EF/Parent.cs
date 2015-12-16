@@ -19,7 +19,6 @@ namespace Gradebook.DAL.EF
             this.Pupils = new HashSet<Pupil>();
         }
     
-        public Nullable<bool> IsParent { get; set; }
         public string Relationship { get; set; }
     
         public virtual ICollection<Pupil> Pupils { get; set; }
