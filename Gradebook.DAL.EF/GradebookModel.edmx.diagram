@@ -20,7 +20,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="GradebookModel.Pupil" Width="1.5" PointX="3.75" PointY="0.625" />
         <InheritanceConnector EntityType="GradebookModel.Pupil" />
-        <EntityTypeShape EntityType="GradebookModel.Parent" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="GradebookModel.Parent" Width="1.5" PointX="3.875" PointY="3" />
         <InheritanceConnector EntityType="GradebookModel.Parent" />
         <EntityTypeShape EntityType="GradebookModel.Teacher" Width="1.5" PointX="3.875" PointY="5.25" />
         <InheritanceConnector EntityType="GradebookModel.Teacher" />
