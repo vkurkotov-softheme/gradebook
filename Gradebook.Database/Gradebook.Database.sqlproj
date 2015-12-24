@@ -68,10 +68,12 @@
     <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables" />
     <Folder Include="Schema Objects\Schemas\dbo\Indexes" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug.Gradebook.Database.publish.xml" />
     <None Include="Release.Gradebook.Database.publish.xml" />
+    <None Include="Debug.Pixabit.Gradebook.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema Objects\Schemas\dbo\Tables\User.sql" />
@@ -87,5 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Gradebook.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

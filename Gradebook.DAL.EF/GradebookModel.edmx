@@ -101,7 +101,6 @@
           <Property Name="Relationship" Type="nvarchar" MaxLength="50" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsParent" Type="bit" />
           <Property Name="IsAdministrator" Type="bit" />
           <Property Name="Language" Type="nvarchar" MaxLength="8" />
         </EntityType>
@@ -514,7 +513,6 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
         </EntityType>
         <EntityType Name="Parent" BaseType="GradebookModel.User" >
           <NavigationProperty Name="Pupils" Relationship="GradebookModel.PupilParent" FromRole="Parent" ToRole="Pupil" />
-          <Property Name="IsParent" Type="Boolean" />
           <Property Name="Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Teacher" BaseType="GradebookModel.User" >
@@ -643,7 +641,6 @@ warning 6037: Foreign key constraint 'FK_ParentPupil_Pupil_To_User' has been omi
             <EntityTypeMapping TypeName="IsTypeOf(GradebookModel.Parent)">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Relationship" ColumnName="Relationship" />
-                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="UserType" Value="Parent" />
               </MappingFragment>

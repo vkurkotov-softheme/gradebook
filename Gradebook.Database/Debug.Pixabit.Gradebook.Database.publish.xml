@@ -4,8 +4,8 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>Gradebook</TargetDatabaseName>
     <DeployScriptFileName>Gradebook.Database.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=tcp:vkurkotov.database.windows.net,1433;Persist Security Info=True;User ID=aa_sa@vkurkotov;Pooling=False</TargetConnectionString>
-    <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
+    <TargetConnectionString>Data Source=.\sqlserver2012;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <ScriptDatabaseOptions>False</ScriptDatabaseOptions>
     <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>

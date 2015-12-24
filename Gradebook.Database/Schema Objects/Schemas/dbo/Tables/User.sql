@@ -17,7 +17,6 @@
     [Relationship] NVARCHAR(50) NULL, 
     [Deleted] BIT NOT NULL DEFAULT 0, 
     [UserType] NVARCHAR(50) NOT NULL DEFAULT 'BASEUSER', 
-    [IsParent] BIT NULL, 
     [IsAdministrator] BIT NULL, 
 	[Language] nVarchar(8) NULL,
     CONSTRAINT [CK_Email_PasswordHash] CHECK ([Email] IS NULL AND [PasswordHash] IS NULL OR [Email] IS NOT NULL AND [PasswordHash] IS NOT NULL), 
